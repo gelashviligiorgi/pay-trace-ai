@@ -39,3 +39,7 @@ Thumbs.db
 
 # Testing
 coverage/
+
+# Supabase
+.supabase/
+**/.supabase/
