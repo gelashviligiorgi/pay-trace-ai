@@ -2,12 +2,12 @@
   "name": "pay-trace-ai-backend",
   "version": "1.0.0",
   "description": "Backend for Pay Trace AI",
-  "main": "src/index.ts",
+  "main": "src/server.ts",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
