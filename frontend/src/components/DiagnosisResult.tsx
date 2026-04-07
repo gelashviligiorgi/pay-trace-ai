@@ -1,15 +1,37 @@
-import type { AnalysisResult } from '@/types'
+import { useEffect, useState } from 'react';
 
 interface DiagnosisResultProps {
-  result: AnalysisResult | null;
-  loading: boolean;
+  streamingText: string;
+  isStreaming: boolean;
   error: string | null;
 }
 
-export const DiagnosisResult = ({ result, loading, error }: DiagnosisResultProps) => {
-  if (loading) {
+export const DiagnosisResult = ({ streamingText, isStreaming, error }: DiagnosisResultProps) => {
+  const [showCursor, setShowCursor] = useState(true);
+
+  // Blink cursor while streaming
+  useEffect(() => {
+    if (!isStreaming) {
+      setShowCursor(false);
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, [isStreaming]);
+
+  // Show pulsing loading indicator before first chunk
+  if (isStreaming && !streamingText) {
     return (
       <div className="diagnosis-result loading">
+        <div className="loading-pulse">
+          <div className="pulse-dot"></div>
+          <div className="pulse-dot"></div>
+          <div className="pulse-dot"></div>
+        </div>
         <p>Analyzing error...</p>
       </div>
     );
@@ -24,32 +46,18 @@ export const DiagnosisResult = ({ result, loading, error }: DiagnosisResultProps
     );
   }
 
-  if (!result) {
+  if (!streamingText && !isStreaming) {
     return null;
   }
 
   return (
     <div className="diagnosis-result success">
       <h3>Diagnosis</h3>
-
-      <div className="result-section">
-        <strong>Diagnosis:</strong>
-        <p>{result.diagnosis}</p>
-      </div>
-
-      <div className="result-section">
-        <strong>Cause:</strong>
-        <p>{result.cause}</p>
-      </div>
-
-      <div className="result-section">
-        <strong>Suggestion:</strong>
-        <p>{result.suggestion}</p>
-      </div>
-
-      <div className="result-section">
-        <strong>Payment Provider:</strong>
-        <p>{result.psp}</p>
+      <div className="streaming-text-container">
+        <pre className="streaming-text">
+          {streamingText}
+          {isStreaming && showCursor && <span className="cursor">▊</span>}
+        </pre>
       </div>
     </div>
   );

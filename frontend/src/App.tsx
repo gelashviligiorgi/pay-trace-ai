@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   const [errorMessage, setErrorMessage] = useState('');
-  const { result, loading, error, analyze } = useAnalyze();
+  const { streamingText, isStreaming, error, analyze } = useAnalyze();
 
   const handleSubmit = async () => {
     if (!errorMessage.trim()) {
@@ -26,18 +26,18 @@ function App() {
         <ErrorInput
           value={errorMessage}
           onChange={setErrorMessage}
-          disabled={loading}
+          disabled={isStreaming}
         />
 
         <button
           onClick={handleSubmit}
-          disabled={loading || !errorMessage.trim()}
+          disabled={isStreaming || !errorMessage.trim()}
           className="analyze-button"
         >
-          {loading ? 'Analyzing...' : 'Analyze Error'}
+          {isStreaming ? 'Analyzing...' : 'Analyze Error'}
         </button>
 
-        <DiagnosisResult result={result} loading={loading} error={error} />
+        <DiagnosisResult streamingText={streamingText} isStreaming={isStreaming} error={error} />
       </main>
     </div>
   );
