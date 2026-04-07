@@ -1,16 +1,23 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import morgan from 'morgan';
 import { healthCheck, analyzeError } from './controllers/index.js';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// HTTP request logging
+// 'dev' format in development: colorized, concise output
+// 'combined' format in production: Apache-style logs for parsing/analysis
+app.use(morgan(isDevelopment ? 'dev' : 'combined'));
 
 // Routes
 app.get('/health', healthCheck);
