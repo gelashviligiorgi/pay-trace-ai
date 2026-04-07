@@ -30,24 +30,33 @@ export const analyzeError = async (
     const { error } = validation.data;
     console.log('[Analyze] Processing error analysis request, error length:', error.length);
 
+    // Set SSE headers for streaming
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+
     // Check if mock mode is enabled
     if (process.env.USE_MOCK_AI === 'true') {
-      console.log('[Analyze] Using mock AI response');
-      const mockResponse: DiagnosisResponse = {
-        diagnosis: 'Payment declined due to insufficient funds',
-        cause: "The customer's account balance is too low to complete this transaction",
-        suggestion: 'Ask the customer to use a different payment method or add funds to their account',
-        psp: 'stripe',
-      };
-      res.json(mockResponse);
+      console.log('[Analyze] Using mock AI response with streaming');
+      const mockText = 'Payment declined due to insufficient funds. The customer\'s account balance is too low to complete this transaction. Ask the customer to use a different payment method or add funds to their account.';
+      const words = mockText.split(' ');
+
+      // Simulate streaming by sending words with delay
+      for (const word of words) {
+        res.write(`data: ${JSON.stringify({ chunk: word + ' ' })}\n\n`);
+        await new Promise((resolve) => setTimeout(resolve, 50));
+      }
+
+      res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+      res.end();
       return;
     }
 
-    // Call Anthropic API
-    console.log('[Analyze] Calling Anthropic API with model: claude-sonnet-4-20250514');
+    // Call Anthropic API with streaming
+    console.log('[Analyze] Calling Anthropic API with streaming, model: claude-sonnet-4-20250514');
     const systemPrompt = `You are an expert payment systems engineer. You diagnose payment errors clearly and concisely. Always explain: what the error means, the likely cause, and what the developer should do next.`;
 
-    const message = await anthropic.messages.create({
+    const stream = anthropic.messages.stream({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 1024,
       system: systemPrompt,
@@ -59,25 +68,36 @@ export const analyzeError = async (
       ],
     });
 
+    // Handle stream events
+    stream.on('text', (text: string) => {
+      res.write(`data: ${JSON.stringify({ chunk: text })}\n\n`);
+    });
+
+    stream.on('error', (streamError: Error) => {
+      console.error('[Analyze] Stream error:', {
+        error: streamError.message,
+        stack: streamError.stack,
+      });
+      res.write(`data: ${JSON.stringify({ error: streamError.message })}\n\n`);
+      res.end();
+    });
+
+    // Wait for stream to complete
+    const finalMessage = await stream.finalMessage();
+
     const duration = Date.now() - startTime;
-    console.log('[Analyze] Anthropic API response received', {
+    console.log('[Analyze] Anthropic API stream completed', {
       duration: `${duration}ms`,
-      model: message.model,
-      stopReason: message.stop_reason,
+      model: finalMessage.model,
+      stopReason: finalMessage.stop_reason,
       usage: {
-        inputTokens: message.usage.input_tokens,
-        outputTokens: message.usage.output_tokens,
+        inputTokens: finalMessage.usage.input_tokens,
+        outputTokens: finalMessage.usage.output_tokens,
       },
     });
 
-    const textContent = message.content.find((block) => block.type === 'text');
-
-    if (!textContent || textContent.type !== 'text') {
-      console.error('[Analyze] No text content in Anthropic response');
-      throw new Error('No text content in Anthropic response');
-    }
-
-    res.json({ diagnosis: textContent.text });
+    res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+    res.end();
   } catch (error) {
     const duration = Date.now() - startTime;
     console.error('[Analyze] Error processing request', {
@@ -86,9 +106,16 @@ export const analyzeError = async (
       stack: error instanceof Error ? error.stack : undefined,
     });
 
-    res.status(500).json({
-      error: 'Internal server error',
-      details: error instanceof Error ? error.message : 'Unknown error',
-    });
+    // If headers not sent yet, send JSON error
+    if (!res.headersSent) {
+      res.status(500).json({
+        error: 'Internal server error',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      });
+    } else {
+      // If streaming already started, send error as SSE
+      res.write(`data: ${JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' })}\n\n`);
+      res.end();
+    }
   }
 };
