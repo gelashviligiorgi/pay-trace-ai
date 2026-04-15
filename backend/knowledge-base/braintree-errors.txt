@@ -1,0 +1,49 @@
+SOURCE: Braintree
+
+CODE: 2001
+MEANING: Insufficient Funds
+CAUSE: Customer's account does not have enough funds to complete the transaction
+RETRYABLE: yes
+FIX: Ask customer to use a different payment method or add funds to their account
+
+CODE: 2002
+MEANING: Limit Exceeded
+CAUSE: Transaction amount exceeds card's daily or transaction limit
+RETRYABLE: yes
+FIX: Customer should contact their bank to increase limits or use an alternative payment method
+
+CODE: 2003
+MEANING: Cardholder's Activity Limit Exceeded
+CAUSE: Too many transactions attempted in a short period
+RETRYABLE: yes
+FIX: Wait and retry later, or ask customer to contact their bank
+
+CODE: 2004
+MEANING: Expired Card
+CAUSE: The card's expiration date has passed
+RETRYABLE: no
+FIX: Request updated card information from customer
+
+CODE: 2010
+MEANING: Card Issuer Declined CVV
+CAUSE: CVV verification failed at the issuing bank
+RETRYABLE: yes
+FIX: Ask customer to verify and re-enter the correct CVV code
+
+CODE: 2038
+MEANING: Processor Declined
+CAUSE: Generic decline from the card processor without specific reason
+RETRYABLE: yes
+FIX: Suggest customer contact their bank or try a different payment method
+
+CODE: 2046
+MEANING: Declined - Call Issuer
+CAUSE: Bank requires cardholder to call for authorization
+RETRYABLE: no
+FIX: Customer must contact their bank before retrying the transaction
+
+CODE: 2074
+MEANING: Duplicate Transaction
+CAUSE: Same transaction submitted multiple times within a short timeframe
+RETRYABLE: no
+FIX: Check if original transaction succeeded; wait before attempting again

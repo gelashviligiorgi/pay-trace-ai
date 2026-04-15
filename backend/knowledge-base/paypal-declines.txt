@@ -1,0 +1,31 @@
+SOURCE: PayPal
+
+CODE: INSTRUMENT_DECLINED
+MEANING: Payment instrument was declined by processor
+CAUSE: Issuing bank declined the transaction
+RETRYABLE: yes
+FIX: Customer should contact their bank or use alternative payment method
+
+CODE: INSUFFICIENT_FUNDS
+MEANING: Account does not have sufficient balance
+CAUSE: PayPal balance or linked funding source lacks funds
+RETRYABLE: yes
+FIX: Ask customer to add funds or link a different payment source
+
+CODE: TRANSACTION_LIMIT_EXCEEDED
+MEANING: Transaction exceeds account limits
+CAUSE: PayPal account has spending limits that were exceeded
+RETRYABLE: yes
+FIX: Customer needs to verify their PayPal account or wait until limit resets
+
+CODE: FRAUD_DETECTED
+MEANING: Transaction flagged by fraud systems
+CAUSE: PayPal's fraud detection system identified suspicious activity
+RETRYABLE: no
+FIX: Customer must contact PayPal support to resolve security concerns
+
+CODE: REDIRECT_REQUIRED
+MEANING: Customer needs to complete authentication
+CAUSE: Additional verification required for security
+RETRYABLE: yes
+FIX: Ensure customer completes the redirect flow to authenticate

@@ -1,0 +1,31 @@
+SOURCE: 3D Secure
+
+CODE: authenticate_successful
+MEANING: Customer successfully completed 3DS authentication
+CAUSE: Cardholder verified their identity through 3DS challenge
+RETRYABLE: no
+FIX: Proceed with transaction authorization
+
+CODE: authenticate_failed
+MEANING: 3DS authentication failed
+CAUSE: Customer failed to complete authentication or provided incorrect credentials
+RETRYABLE: yes
+FIX: Allow customer to retry authentication or use a different payment method
+
+CODE: lookup_not_enrolled
+MEANING: Card not enrolled in 3DS
+CAUSE: Issuing bank does not support 3DS for this card
+RETRYABLE: no
+FIX: Proceed with non-3DS transaction flow if allowed, or request different card
+
+CODE: lookup_error
+MEANING: Error during 3DS lookup
+CAUSE: Technical error communicating with directory server
+RETRYABLE: yes
+FIX: Retry the lookup process; if persists, contact 3DS provider support
+
+CODE: authenticate_unable_to_authenticate
+MEANING: Authentication could not be completed
+CAUSE: Technical issue prevented completion of authentication flow
+RETRYABLE: yes
+FIX: Retry authentication; if issue persists, fall back to non-3DS flow or alternative payment

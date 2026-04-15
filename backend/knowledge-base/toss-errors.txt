@@ -1,0 +1,31 @@
+SOURCE: Toss Payments
+
+CODE: INVALID_CARD
+MEANING: Card number is invalid
+CAUSE: Card number format is incorrect or card type not supported
+RETRYABLE: no
+FIX: Ask customer to verify card number or use a different card
+
+CODE: CARD_EXPIRED
+MEANING: Card has expired
+CAUSE: Card expiration date has passed
+RETRYABLE: no
+FIX: Request updated card information from customer
+
+CODE: PAYMENT_LIMIT_EXCEEDED
+MEANING: Payment limit exceeded
+CAUSE: Transaction exceeds daily or monthly payment limits
+RETRYABLE: yes
+FIX: Customer should contact Toss support or try smaller transaction amount
+
+CODE: AUTHENTICATION_FAILED
+MEANING: Customer authentication failed
+CAUSE: Failed to verify customer identity
+RETRYABLE: yes
+FIX: Ask customer to retry authentication process with correct credentials
+
+CODE: PROVIDER_ERROR
+MEANING: Payment provider error
+CAUSE: Technical issue on payment provider side
+RETRYABLE: yes
+FIX: Retry transaction after a short delay; escalate if persistent
