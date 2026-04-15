@@ -28,4 +28,4 @@ CODE: authenticate_unable_to_authenticate
 MEANING: Authentication could not be completed
 CAUSE: Technical issue prevented completion of authentication flow
 RETRYABLE: yes
-FIX: Retry authentication; if issue persists, fall back to non-3DS flow or alternative payment
+FIX: Retry authentication; if issue persists, fall back to non-3DS flow or alternative payment updated if hash is working
