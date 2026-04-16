@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS knowledge_base (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   content TEXT NOT NULL,
   embedding vector(1536),
+  content_hash TEXT,
   source TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -20,9 +21,14 @@ WITH (lists = 100);
 CREATE INDEX IF NOT EXISTS knowledge_base_source_idx
 ON knowledge_base (source);
 
--- Create match_documents function for similarity search
-CREATE OR REPLACE FUNCTION match_documents(
+-- Create index for content hash lookups (used by ingestion script)
+CREATE INDEX IF NOT EXISTS knowledge_base_content_hash_idx
+ON knowledge_base (source, content_hash);
+
+-- Create match_knowledge_base function for similarity search
+CREATE OR REPLACE FUNCTION match_knowledge_base(
   query_embedding vector(1536),
+  match_threshold FLOAT DEFAULT 0.5,
   match_count INT DEFAULT 5
 )
 RETURNS TABLE (
@@ -32,17 +38,19 @@ RETURNS TABLE (
   similarity FLOAT
 )
 LANGUAGE plpgsql
+STABLE
 AS $$
 BEGIN
   RETURN QUERY
   SELECT
-    knowledge_base.id,
-    knowledge_base.content,
-    knowledge_base.source,
-    1 - (knowledge_base.embedding <=> query_embedding) AS similarity
-  FROM knowledge_base
-  WHERE knowledge_base.embedding IS NOT NULL
-  ORDER BY knowledge_base.embedding <=> query_embedding
+    kb.id,
+    kb.content,
+    kb.source,
+    (1 - (kb.embedding <=> query_embedding))::FLOAT AS similarity
+  FROM knowledge_base kb
+  WHERE kb.embedding IS NOT NULL
+    AND (1 - (kb.embedding <=> query_embedding)) > match_threshold
+  ORDER BY kb.embedding <=> query_embedding
   LIMIT match_count;
 END;
 $$;
