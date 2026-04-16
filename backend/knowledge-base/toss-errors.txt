@@ -1,31 +1,41 @@
 SOURCE: Toss Payments
 
 CODE: INVALID_CARD
-MEANING: Card number is invalid
-CAUSE: Card number format is incorrect or card type not supported
+MEANING: Card number is invalid or not supported
+CAUSE: Card number format is incorrect, fails Luhn check, or the card type is not supported by Toss Payments
 RETRYABLE: no
 FIX: Ask customer to verify card number or use a different card
+SYNONYMS: bad card number, wrong card number, card not accepted, unsupported card, card format invalid
+CONTEXT: Triggered when the card number entered does not pass basic validation or belongs to a card network that Toss does not support. Customer should double-check the card number for typos or try a different card.
 
 CODE: CARD_EXPIRED
-MEANING: Card has expired
-CAUSE: Card expiration date has passed
+MEANING: The card used for payment has expired
+CAUSE: Card expiration date has passed and the card is no longer valid
 RETRYABLE: no
 FIX: Request updated card information from customer
+SYNONYMS: card is old, outdated card, expired payment method, card out of date, past expiry date, card no longer valid
+CONTEXT: Customer is attempting to pay with a card whose expiration month and year have passed. They likely need to update their saved payment method with a newly issued replacement card. Common when customers have not updated stored card details after receiving a renewed card from their bank.
 
 CODE: PAYMENT_LIMIT_EXCEEDED
-MEANING: Payment limit exceeded
-CAUSE: Transaction exceeds daily or monthly payment limits
+MEANING: Payment limit exceeded for this account or card
+CAUSE: Transaction exceeds the daily or monthly payment limits set by Toss or the issuing bank
 RETRYABLE: yes
-FIX: Customer should contact Toss support or try smaller transaction amount
+FIX: Customer should contact Toss support or try a smaller transaction amount
+SYNONYMS: account limit reached, too many transactions, spending limit hit, over limit, limit exceeded, maximum payment exceeded, transaction cap
+CONTEXT: Toss Payments enforces per-transaction and cumulative daily or monthly limits. This may also be enforced by the customer's issuing bank independently. Customer can split the payment into smaller amounts or contact Toss support to request a limit increase.
 
 CODE: AUTHENTICATION_FAILED
-MEANING: Customer authentication failed
-CAUSE: Failed to verify customer identity
+MEANING: Customer identity authentication failed during payment
+CAUSE: Failed to verify customer identity through the authentication process. The customer did not complete or passed incorrect credentials during identity verification.
 RETRYABLE: yes
 FIX: Ask customer to retry authentication process with correct credentials
+SYNONYMS: identity verification failed, identity check failed, verification failed, failed to verify identity, authentication error, could not verify customer, identity not confirmed
+CONTEXT: Toss requires identity verification as part of the payment flow, particularly for first-time users or high-value transactions. Failure can mean the customer entered wrong credentials, the verification session timed out, or the identity check could not be completed. This is equivalent to identity verification failure in the Toss payment context.
 
 CODE: PROVIDER_ERROR
-MEANING: Payment provider error
-CAUSE: Technical issue on payment provider side
+MEANING: Technical error on the payment provider side
+CAUSE: Internal technical issue within Toss Payments infrastructure or upstream payment provider
 RETRYABLE: yes
 FIX: Retry transaction after a short delay; escalate if persistent
+SYNONYMS: system error, provider down, technical error, payment system error, infrastructure error, backend error, toss system error
+CONTEXT: An unexpected technical failure occurred on the Toss Payments side rather than being caused by the customer or their card. These errors are typically transient. Retry after a few seconds. If the error persists across multiple retries it may indicate a broader Toss outage — check Toss status page.

@@ -8,7 +8,8 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "ingest": "tsx scripts/ingest.cts"
+    "ingest": "tsx scripts/ingest.cts",
+    "test:rag": "tsx src/rag/test-search.ts"
   },
   "keywords": [],
   "author": "",

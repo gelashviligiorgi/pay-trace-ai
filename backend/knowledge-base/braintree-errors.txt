@@ -5,45 +5,61 @@ MEANING: Insufficient Funds
 CAUSE: Customer's account does not have enough funds to complete the transaction
 RETRYABLE: yes
 FIX: Ask customer to use a different payment method or add funds to their account
+SYNONYMS: not enough money, low balance, insufficient balance, no funds, account empty, cant afford, balance too low
+CONTEXT: Common during end of month when customers run low on funds. Also triggered when a customer tries to pay with a prepaid card that has insufficient balance. The transaction amount exceeds what is currently available in the linked bank account or card.
 
 CODE: 2002
 MEANING: Limit Exceeded
-CAUSE: Transaction amount exceeds card's daily or transaction limit
+CAUSE: Transaction amount exceeds card's daily or transaction limit set by the issuing bank
 RETRYABLE: yes
 FIX: Customer should contact their bank to increase limits or use an alternative payment method
+SYNONYMS: account limit reached, spending limit exceeded, daily limit hit, transaction cap reached, over limit, maximum amount exceeded
+CONTEXT: Triggered when a single transaction or cumulative daily spending surpasses the bank-imposed limit. Common with debit cards that have strict daily caps. Customer may not be aware of their limit until it is hit.
 
 CODE: 2003
 MEANING: Cardholder's Activity Limit Exceeded
-CAUSE: Too many transactions attempted in a short period
+CAUSE: Too many transactions attempted in a short period of time
 RETRYABLE: yes
 FIX: Wait and retry later, or ask customer to contact their bank
+SYNONYMS: too many transactions, too many attempts, velocity limit, frequency limit, activity limit, transaction count exceeded
+CONTEXT: Triggered by excessive payment attempts within a short window. Banks impose velocity limits to prevent fraud. Can happen if a customer retries a failed payment too many times in quick succession.
 
 CODE: 2004
 MEANING: Expired Card
 CAUSE: The card's expiration date has passed
 RETRYABLE: no
 FIX: Request updated card information from customer
+SYNONYMS: card is old, outdated card, card out of date, card no longer valid, past expiry, expired payment method
+CONTEXT: Customer is attempting to pay with a card whose expiration month and year have passed. Often happens when a new card was issued but the customer has not updated their saved payment details. Card networks reject expired cards at authorization stage.
 
 CODE: 2010
 MEANING: Card Issuer Declined CVV
 CAUSE: CVV verification failed at the issuing bank
 RETRYABLE: yes
 FIX: Ask customer to verify and re-enter the correct CVV code
+SYNONYMS: wrong CVV, incorrect security code, bad CVV, wrong CVC, security number mismatch, wrong card verification value
+CONTEXT: Customer entered an incorrect 3-digit security code from the back of their card. Also triggered if the CVV on file does not match what the issuing bank has recorded. Some virtual cards have dynamically generated CVVs that change periodically.
 
 CODE: 2038
 MEANING: Processor Declined
-CAUSE: Generic decline from the card processor without specific reason
+CAUSE: Generic decline from the card processor without a specific reason provided
 RETRYABLE: yes
 FIX: Suggest customer contact their bank or try a different payment method
+SYNONYMS: payment rejected, transaction declined, card declined, processor rejection, generic decline, unspecified decline
+CONTEXT: Catch-all decline code when the processor does not return a specific reason. The bank has declined the transaction but has not communicated why. Could be due to fraud suspicion, unusual activity, or internal bank policy. Customer should call their bank for details.
 
 CODE: 2046
 MEANING: Declined - Call Issuer
-CAUSE: Bank requires cardholder to call for authorization
+CAUSE: Bank requires cardholder to call for manual authorization before the transaction can proceed
 RETRYABLE: no
 FIX: Customer must contact their bank before retrying the transaction
+SYNONYMS: need to call bank, contact bank, call your bank, bank requires contact, manual authorization required, issuer contact required
+CONTEXT: Bank has flagged this transaction and requires the cardholder to call the number on the back of their card to verify identity or authorize the payment. Common after a fraud alert is triggered or when the bank detects unusual spending patterns.
 
 CODE: 2074
 MEANING: Duplicate Transaction
 CAUSE: Same transaction submitted multiple times within a short timeframe
 RETRYABLE: no
 FIX: Check if original transaction succeeded; wait before attempting again
+SYNONYMS: duplicate payment, repeated transaction, double charge, same transaction twice, already processed
+CONTEXT: Triggered when an identical transaction with the same amount, card, and merchant is submitted too quickly after a previous attempt. Often caused by a user double-clicking a payment button or a retry loop in the backend. Always check if the original succeeded before retrying.

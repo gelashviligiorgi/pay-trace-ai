@@ -2,30 +2,40 @@ SOURCE: 3D Secure
 
 CODE: authenticate_successful
 MEANING: Customer successfully completed 3DS authentication
-CAUSE: Cardholder verified their identity through 3DS challenge
+CAUSE: Cardholder verified their identity through the 3DS challenge flow
 RETRYABLE: no
 FIX: Proceed with transaction authorization
+SYNONYMS: 3ds passed, authentication success, verified, identity confirmed, challenge completed, 3ds complete
+CONTEXT: The customer has successfully completed the 3DS challenge, typically by entering a one-time password sent by their bank or approving via their banking app. The transaction is now authorized to proceed. This is the expected happy path result.
 
 CODE: authenticate_failed
 MEANING: 3DS authentication failed
-CAUSE: Customer failed to complete authentication or provided incorrect credentials
+CAUSE: Customer failed to complete authentication or provided incorrect credentials during the 3DS challenge
 RETRYABLE: yes
 FIX: Allow customer to retry authentication or use a different payment method
+SYNONYMS: 3ds failed, authentication failure, challenge failed, verification failed, wrong otp, incorrect password, failed 3ds challenge
+CONTEXT: The customer entered the wrong one-time password, let the challenge session time out, or cancelled the authentication. Can also happen if the customer's bank app rejected the approval request. Customer can retry but repeated failures may indicate fraud or a genuine inability to authenticate.
 
 CODE: lookup_not_enrolled
-MEANING: Card not enrolled in 3DS
-CAUSE: Issuing bank does not support 3DS for this card
+MEANING: Card is not enrolled in 3D Secure
+CAUSE: The issuing bank does not support 3DS for this card
 RETRYABLE: no
-FIX: Proceed with non-3DS transaction flow if allowed, or request different card
+FIX: Proceed with non-3DS transaction flow if your merchant configuration allows it, or request a different card
+SYNONYMS: card not enrolled, no 3ds, 3ds not supported, bank does not support 3ds, not enrolled in 3ds
+CONTEXT: The card's issuing bank has not enrolled this card in 3DS. This is common with older cards or banks in regions where 3DS adoption is lower. Depending on your merchant risk settings you can either proceed without 3DS authentication or decline and ask for a different card.
 
 CODE: lookup_error
-MEANING: Error during 3DS lookup
-CAUSE: Technical error communicating with directory server
+MEANING: Technical error occurred during the 3DS directory server lookup
+CAUSE: Network or technical error when communicating with the 3DS directory server to check card enrollment
 RETRYABLE: yes
-FIX: Retry the lookup process; if persists, contact 3DS provider support
+FIX: Retry the lookup process; if the error persists contact your 3DS provider support
+SYNONYMS: 3ds lookup failed, directory server error, 3ds check failed, enrollment lookup error, technical error 3ds
+CONTEXT: The system could not reach the 3DS directory server or received an unexpected response. This is a technical failure unrelated to the customer or their card. A retry usually resolves it. Persistent failures may indicate an issue with your 3DS provider integration or a broader outage.
 
 CODE: authenticate_unable_to_authenticate
-MEANING: Authentication could not be completed
-CAUSE: Technical issue prevented completion of authentication flow
+MEANING: Authentication could not be completed due to a technical issue
+CAUSE: A technical problem prevented the 3DS authentication flow from completing, not caused by the customer entering wrong credentials
 RETRYABLE: yes
-FIX: Retry authentication; if issue persists, fall back to non-3DS flow or alternative payment updated if hash is working
+FIX: Retry authentication; if the issue persists fall back to non-3DS flow or offer an alternative payment method
+SYNONYMS: unable to authenticate, 3ds incomplete, authentication incomplete, could not complete 3ds, technical authentication failure
+CONTEXT: Distinct from authenticate_failed — this code means the system was unable to run the authentication process at all, not that the customer failed it. Causes include ACS unavailability, timeout during the challenge, or integration issues. Should be retried before concluding the customer cannot authenticate.

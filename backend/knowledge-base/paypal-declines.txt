@@ -1,31 +1,41 @@
 SOURCE: PayPal
 
 CODE: INSTRUMENT_DECLINED
-MEANING: Payment instrument was declined by processor
-CAUSE: Issuing bank declined the transaction
+MEANING: Payment instrument was declined by the processor
+CAUSE: Issuing bank declined the transaction at the card network level
 RETRYABLE: yes
-FIX: Customer should contact their bank or use alternative payment method
+FIX: Customer should contact their bank or use an alternative payment method
+SYNONYMS: payment method declined, card rejected, funding source declined, payment instrument rejected
+CONTEXT: The underlying funding source attached to the PayPal account was rejected by the issuing bank. This could be a linked debit card, credit card, or bank account. The decline originates at the bank level, not PayPal. Customer should check with their bank or switch to PayPal balance if available.
 
 CODE: INSUFFICIENT_FUNDS
-MEANING: Account does not have sufficient balance
-CAUSE: PayPal balance or linked funding source lacks funds
+MEANING: Account does not have sufficient balance to cover the transaction
+CAUSE: PayPal balance or linked funding source lacks the required funds
 RETRYABLE: yes
 FIX: Ask customer to add funds or link a different payment source
+SYNONYMS: not enough money, low balance, no funds, account empty, balance too low, insufficient balance, cant pay, not enough in account
+CONTEXT: The customer's PayPal balance is too low and no backup funding source is available or their linked bank account or card also has insufficient funds. Common with PayPal balance-only accounts. Customer needs to top up their PayPal account or add a funded card.
 
 CODE: TRANSACTION_LIMIT_EXCEEDED
-MEANING: Transaction exceeds account limits
-CAUSE: PayPal account has spending limits that were exceeded
+MEANING: Transaction exceeds the account's spending limits
+CAUSE: PayPal account has spending limits that were exceeded by this transaction
 RETRYABLE: yes
-FIX: Customer needs to verify their PayPal account or wait until limit resets
+FIX: Customer needs to verify their PayPal account or wait until the limit resets
+SYNONYMS: account limit reached, spending limit exceeded, over limit, too large transaction, amount too high, limit hit, exceeded maximum
+CONTEXT: Unverified PayPal accounts have lower transaction limits. Customer may need to complete PayPal's verification process by linking a bank account or confirming identity to raise their limits. Also applies to single transaction caps.
 
 CODE: FRAUD_DETECTED
-MEANING: Transaction flagged by fraud systems
-CAUSE: PayPal's fraud detection system identified suspicious activity
+MEANING: Transaction flagged as potentially fraudulent by PayPal's risk systems
+CAUSE: PayPal's fraud detection system identified suspicious activity based on unusual patterns, mismatched billing details, velocity checks, or known fraud indicators
 RETRYABLE: no
 FIX: Customer must contact PayPal support to resolve security concerns
+SYNONYMS: fraud suspected, suspicious transaction, flagged as fraud, potential fraud, fraudulent activity, security block, transaction blocked for fraud, looks like fraud
+CONTEXT: PayPal's automated risk engine blocked the transaction. Triggers include mismatched shipping and billing addresses, multiple failed attempts, unusual spending patterns, or the account being flagged previously. Customer must contact PayPal directly — this cannot be resolved by retrying.
 
 CODE: REDIRECT_REQUIRED
-MEANING: Customer needs to complete authentication
-CAUSE: Additional verification required for security
+MEANING: Customer needs to complete additional authentication before payment can proceed
+CAUSE: PayPal requires additional verification or security step to authorize this transaction
 RETRYABLE: yes
 FIX: Ensure customer completes the redirect flow to authenticate
+SYNONYMS: authentication required, verification needed, complete verification, additional step required, redirect to PayPal
+CONTEXT: PayPal needs the customer to complete an extra authentication step, typically through a browser redirect to PayPal's hosted page. Common in server-side integrations where the redirect was not properly handled. The transaction will complete once the customer finishes the verification flow.
