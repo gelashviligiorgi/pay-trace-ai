@@ -39,6 +39,7 @@ Thumbs.db
 
 # Testing
 coverage/
+rag-test-report.json
 
 # Supabase
 .supabase/

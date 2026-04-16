@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
 import { DiagnosisResponse, ErrorResponse } from '../types/index.js';
-import { anthropic } from '../lib/anthropic.js';
-import { searchKnowledgeBase } from '../rag/search.js';
+import { runAgentLoop } from '../agent/loop.js';
 
 // Zod schema for validation
 const analyzeRequestSchema = z.object({
@@ -31,17 +30,6 @@ export const analyzeError = async (
     const { error } = validation.data;
     console.log('[Analyze] Processing error analysis request, error length:', error.length);
 
-    // Step 1: Search knowledge base for relevant context
-    console.log('[RAG] Searching knowledge base for:', error.substring(0, 100));
-    const ragChunks = await searchKnowledgeBase(error, 5);
-
-    // Log RAG retrieval results
-    console.log('[RAG] Retrieved chunks:', {
-      count: ragChunks.length,
-      sources: [...new Set(ragChunks.map(c => c.source))],
-      similarities: ragChunks.map(c => c.similarity.toFixed(3)),
-    });
-
     // Set SSE headers for streaming
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
@@ -64,60 +52,17 @@ export const analyzeError = async (
       return;
     }
 
-    const documentationContext = ragChunks.length > 0
-      ? ragChunks.map(chunk => chunk.content).join('\n\n---\n\n')
-      : 'No relevant documentation found.';
+    // Run agent loop with tool use
+    console.log('[Analyze] Starting agent loop with tool use');
 
-    const systemPrompt = `You are a senior payment engineer specializing in PSP errors from Braintree, PayPal, Mastercard, and Toss.
-
-Use the following documentation to inform your diagnosis:
-
-<documentation>
-${documentationContext}
-</documentation>
-
-Be specific. Reference the exact error codes and causes from the documentation above. If the documentation does not cover the error, say so clearly.`;
-
-    console.log('[Analyze] Calling Anthropic API with streaming, model: claude-sonnet-4-20250514');
-
-    const stream = anthropic.messages.stream({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1024,
-      system: systemPrompt,
-      messages: [
-        {
-          role: 'user',
-          content: error,
-        },
-      ],
+    await runAgentLoop(error, (chunk: string) => {
+      // Stream each chunk to the client via SSE
+      res.write(`data: ${JSON.stringify({ chunk })}\n\n`);
     });
-
-    // Handle stream events
-    stream.on('text', (text: string) => {
-      res.write(`data: ${JSON.stringify({ chunk: text })}\n\n`);
-    });
-
-    stream.on('error', (streamError: Error) => {
-      console.error('[Analyze] Stream error:', {
-        error: streamError.message,
-        stack: streamError.stack,
-      });
-      res.write(`data: ${JSON.stringify({ error: streamError.message })}\n\n`);
-      res.end();
-    });
-
-    // Wait for stream to complete
-    const finalMessage = await stream.finalMessage();
 
     const duration = Date.now() - startTime;
-    console.log('[Analyze] Anthropic API stream completed', {
+    console.log('[Analyze] Agent loop completed', {
       duration: `${duration}ms`,
-      model: finalMessage.model,
-      stopReason: finalMessage.stop_reason,
-      usage: {
-        inputTokens: finalMessage.usage.input_tokens,
-        outputTokens: finalMessage.usage.output_tokens,
-      },
     });
 
     res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
