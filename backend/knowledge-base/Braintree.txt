@@ -1,0 +1,982 @@
+SOURCE: Braintree
+CODE: 2000
+MEANING: Do Not Honor
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Issuing bank declined the transaction without specific reason
+FIX: Contact the issuing bank for clarification, or request a different payment method from the customer.
+SYNONYMS: transaction rejected, payment declined, issuer declined, bank refused, authorization denied
+
+SOURCE: Braintree
+CODE: 2001
+MEANING: Insufficient Funds
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Customer account does not have enough funds available
+FIX: Retry the transaction after customer adds funds to their account, or request an alternative payment method.
+SYNONYMS: not enough money, low balance, no funds, account empty, balance too low, insufficient balance
+
+SOURCE: Braintree
+CODE: 2002
+MEANING: Limit Exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Transaction amount exceeds card or account limits
+FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
+SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+
+SOURCE: Braintree
+CODE: 2003
+MEANING: Cardholder's Activity Limit Exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Transaction amount exceeds card or account limits
+FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
+SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+
+SOURCE: Braintree
+CODE: 2004
+MEANING: Expired Card
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has passed its expiration date
+FIX: Request updated card information with a valid expiration date from the customer.
+SYNONYMS: out of date, no longer valid, past expiration, card expired, date passed
+
+SOURCE: Braintree
+CODE: 2005
+MEANING: Invalid Credit Card Number
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2006
+MEANING: Invalid Expiration Date
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2007
+MEANING: No Account
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: No Account
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2008
+MEANING: Card Account Length Error
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Card Account Length Error
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2009
+MEANING: No Such Issuer
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Issuing bank declined the transaction with reason: No Such Issuer
+FIX: Contact the issuing bank for clarification, or request a different payment method from the customer.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2010
+MEANING: Card Issuer Declined CVV
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: CVV/security code does not match
+FIX: Verify the information with the customer and retry with corrected details.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2011
+MEANING: Voice Authorization Required
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Voice Authorization Required
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2012
+MEANING: Processor Declined – Possible Lost Card
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has been reported lost by the cardholder
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: reported lost, missing card, lost card, cardholder reported lost
+
+SOURCE: Braintree
+CODE: 2013
+MEANING: Processor Declined – Possible Stolen Card
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has been reported stolen by the cardholder
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: reported stolen, fraudulent card, stolen card, theft reported
+
+SOURCE: Braintree
+CODE: 2014
+MEANING: Processor Declined – Fraud Suspected
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Transaction flagged as potentially fraudulent
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+
+SOURCE: Braintree
+CODE: 2015
+MEANING: Transaction Not Allowed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Transaction Not Allowed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2016
+MEANING: Duplicate Transaction
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Duplicate Transaction
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2017
+MEANING: Cardholder Stopped Billing
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Cardholder Stopped Billing
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2018
+MEANING: Cardholder Stopped All Billing
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Cardholder Stopped All Billing
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2019
+MEANING: Invalid Transaction
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2020
+MEANING: Violation
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Violation
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2021
+MEANING: Security Violation
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Security Violation
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2022
+MEANING: Declined – Updated Cardholder Available
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Declined – Updated Cardholder Available
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2023
+MEANING: Processor Does Not Support This Feature
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Processor Does Not Support This Feature
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2024
+MEANING: Card Type Not Enabled
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Card Type Not Enabled
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2025
+MEANING: Set Up Error – Merchant
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Set Up Error – Merchant
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2026
+MEANING: Invalid Merchant ID
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2027
+MEANING: Set Up Error – Amount
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Set Up Error – Amount
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2028
+MEANING: Set Up Error – Hierarchy
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Set Up Error – Hierarchy
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2029
+MEANING: Set Up Error – Card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Set Up Error – Card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2030
+MEANING: Set Up Error – Terminal
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Set Up Error – Terminal
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2031
+MEANING: Encryption Error
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Encryption Error
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2032
+MEANING: Surcharge Not Permitted
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Surcharge Not Permitted
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2033
+MEANING: Inconsistent Data
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Inconsistent Data
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2034
+MEANING: No Action Taken
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: No Action Taken
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2035
+MEANING: Partial Approval For Amount In Group III Version
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Partial Approval For Amount In Group III Version
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2036
+MEANING: Authorization could not be found
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Authorization could not be found
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2037
+MEANING: Already Reversed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Already Reversed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2038
+MEANING: Processor Declined
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Processor Declined
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2039
+MEANING: Invalid Authorization Code
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2040
+MEANING: Invalid Store
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2041
+MEANING: Declined – Call For Approval
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Declined – Call For Approval
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2042
+MEANING: Invalid Client ID
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2043
+MEANING: Error – Do Not Retry, Call Issuer
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Error – Do Not Retry, Call Issuer
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2044
+MEANING: Declined – Call Issuer
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Declined – Call Issuer
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2045
+MEANING: Invalid Merchant Number
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2046
+MEANING: Declined
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Declined
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2047
+MEANING: Call Issuer. Pick Up Card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Call Issuer. Pick Up Card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2048
+MEANING: Invalid Amount
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2049
+MEANING: Invalid SKU Number
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2050
+MEANING: Invalid Credit Plan
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2051
+MEANING: Credit Card Number does not match method of payment
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Credit Card Number does not match method of payment
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2052
+MEANING: Invalid level III Purchase
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2053
+MEANING: Card reported as lost or stolen
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has been reported lost by the cardholder
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: reported lost, missing card, lost card, cardholder reported lost
+
+SOURCE: Braintree
+CODE: 2054
+MEANING: Reversal amount does not match authorization amount
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Reversal amount does not match authorization amount
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2055
+MEANING: Invalid Transaction Division Number
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2056
+MEANING: Transaction amount exceeds the transaction division limit
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Transaction amount exceeds card or account limits
+FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
+SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+
+SOURCE: Braintree
+CODE: 2057
+MEANING: Issuer or Cardholder has put a restriction on the card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Issuer or Cardholder has put a restriction on the card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2058
+MEANING: Merchant not Mastercard SecureCode enabled
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Merchant not Mastercard SecureCode enabled
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2059
+MEANING: Address Verification Failed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Address Verification Failed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2060
+MEANING: Address Verification and Card Security Code Failed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Address Verification and Card Security Code Failed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2061
+MEANING: Invalid Transaction Data
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2062
+MEANING: Invalid Tax Amount
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2063
+MEANING: PayPal Business Account preference resulted in the transaction failing
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal Business Account preference resulted in the transaction failing
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2064
+MEANING: Invalid Currency Code
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2065
+MEANING: Refund Time Limit Exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Transaction amount exceeds card or account limits
+FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
+SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+
+SOURCE: Braintree
+CODE: 2066
+MEANING: PayPal Business Account Restricted
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card or transaction type is restricted by the issuer
+FIX: Customer must contact their bank to resolve the issue. Request a different payment method.
+SYNONYMS: not allowed, blocked, prohibited, restricted transaction, not permitted
+
+SOURCE: Braintree
+CODE: 2067
+MEANING: Authorization Expired
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Card has passed its expiration date
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: out of date, no longer valid, past expiration, card expired, date passed
+
+SOURCE: Braintree
+CODE: 2068
+MEANING: PayPal Business Account Locked or Closed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal Business Account Locked or Closed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2069
+MEANING: PayPal Blocking Duplicate Order IDs
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal Blocking Duplicate Order IDs
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2070
+MEANING: PayPal Buyer Revoked Pre-Approved Payment Authorization
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal Buyer Revoked Pre-Approved Payment Authorization
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2071
+MEANING: PayPal Payee Account Invalid Or Does Not Have a Confirmed Email
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2072
+MEANING: PayPal Payee Email Incorrectly Formatted
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal Payee Email Incorrectly Formatted
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2073
+MEANING: PayPal Validation Error
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal Validation Error
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2074
+MEANING: Funding Instrument In The PayPal Account Was Declined By The Processor Or Bank, Or It Can't
+                    Be Used For This Payment
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Funding Instrument In The PayPal Account Was Declined By The Processor Or Bank, Or It Can't
+                    Be Used For This Payment
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2075
+MEANING: Payer Account Is Locked Or Closed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Payer Account Is Locked Or Closed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2076
+MEANING: Payer Cannot Pay For This Transaction With PayPal
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Payer Cannot Pay For This Transaction With PayPal
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2077
+MEANING: Transaction Refused Due To PayPal Risk Model
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Transaction Refused Due To PayPal Risk Model
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2078
+MEANING: Invalid Secure Payment Data
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2079
+MEANING: PayPal Merchant Account Configuration Error
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal Merchant Account Configuration Error
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2080
+MEANING: Invalid user credentials
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2081
+MEANING: PayPal pending payments are not supported
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal pending payments are not supported
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2082
+MEANING: PayPal Domestic Transaction Required
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal Domestic Transaction Required
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2083
+MEANING: PayPal Phone Number Required
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal Phone Number Required
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2084
+MEANING: PayPal Tax Info Required
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal Tax Info Required
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2085
+MEANING: PayPal Payee Blocked Transaction
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal Payee Blocked Transaction
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2086
+MEANING: PayPal Transaction Limit Exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Transaction amount exceeds card or account limits
+FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
+SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+
+SOURCE: Braintree
+CODE: 2087
+MEANING: PayPal reference transactions not enabled for your account
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal reference transactions not enabled for your account
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2088
+MEANING: Currency not enabled for your PayPal seller account
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Currency not enabled for your PayPal seller account
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2089
+MEANING: PayPal payee email permission denied for this request
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal payee email permission denied for this request
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2090
+MEANING: PayPal or Venmo account not configured to refund more than settled amount
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal or Venmo account not configured to refund more than settled amount
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2091
+MEANING: Currency of this transaction must match currency of your PayPal account
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Currency of this transaction must match currency of your PayPal account
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2092
+MEANING: No Data Found - Try Another Verification Method
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: No Data Found - Try Another Verification Method
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2093
+MEANING: PayPal payment method is invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Braintree
+CODE: 2094
+MEANING: PayPal payment has already been completed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal payment has already been completed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2095
+MEANING: PayPal refund is not allowed after partial refund
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal refund is not allowed after partial refund
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2096
+MEANING: PayPal buyer account can't be the same as the seller account
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal buyer account can't be the same as the seller account
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2097
+MEANING: PayPal authorization amount limit exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Transaction amount exceeds card or account limits
+FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
+SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+
+SOURCE: Braintree
+CODE: 2098
+MEANING: PayPal authorization count limit exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Transaction amount exceeds card or account limits
+FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
+SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+
+SOURCE: Braintree
+CODE: 2099
+MEANING: Cardholder Authentication Required
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Cardholder Authentication Required
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2100
+MEANING: PayPal channel initiated billing not enabled for your account
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PayPal channel initiated billing not enabled for your account
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2101
+MEANING: Additional authorization required
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Additional authorization required
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2102
+MEANING: Incorrect PIN
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Incorrect PIN
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2103
+MEANING: PIN try exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PIN try exceeded
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2104
+MEANING: Offline Issuer Declined
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Offline Issuer Declined
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2105
+MEANING: Cannot Authorize at this time (Life cycle)
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Cannot Authorize at this time (Life cycle)
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2106
+MEANING: Cannot Authorize at this time (Policy)
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Cannot Authorize at this time (Policy)
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2107
+MEANING: Card Not Activated
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Card Not Activated
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Braintree
+CODE: 2108
+MEANING: Closed Card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Closed Card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
