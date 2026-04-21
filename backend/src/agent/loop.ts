@@ -12,7 +12,7 @@ import type {
   ToolUseBlock,
 } from '@anthropic-ai/sdk/resources/messages.js';
 
-const MAX_ITERATIONS = 5;
+const MAX_ITERATIONS = 10;
 
 const SYSTEM_PROMPT = `You are a senior payment engineer specializing in diagnosing payment errors from Braintree, PayPal, Toss Payments, and 3D Secure.
 
