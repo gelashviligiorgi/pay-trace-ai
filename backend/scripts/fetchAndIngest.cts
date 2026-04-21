@@ -12,6 +12,7 @@
 const { writeFileSync } = require('fs');
 const { join } = require('path');
 const { fetchBraintree } = require('./fetchers/braintree.cts');
+const { fetchCheckout } = require('./fetchers/checkout.cts');
 
 /**
  * PSP fetcher registry
@@ -22,6 +23,11 @@ const PSP_FETCHERS = [
     name: 'Braintree',
     fetcher: fetchBraintree,
     filename: 'Braintree.txt',
+  },
+  {
+    name: 'Checkout.com',
+    fetcher: fetchCheckout,
+    filename: 'Checkout.txt',
   },
   // Add more PSPs here:
   // {

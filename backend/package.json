@@ -10,6 +10,7 @@
     "start": "node dist/server.js",
     "fetch": "tsx scripts/fetchAndIngest.cts",
     "fetch:braintree": "tsx scripts/fetchers/braintree.cts",
+    "fetch:checkout": "tsx scripts/fetchers/checkout.cts",
     "ingest": "tsx scripts/ingest.cts",
     "docs:update": "npm run fetch && npm run ingest",
     "test:rag": "tsx src/rag/test-search.ts"
