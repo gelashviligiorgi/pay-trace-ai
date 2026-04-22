@@ -23,7 +23,6 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
 const KNOWLEDGE_BASE_PATH = join(__dirname, '../knowledge-base');
 const BATCH_SIZE = 1; // Process 1 chunk at a time due to strict rate limits
 const DELAY_MS = 30000; // 30 seconds between requests (3 RPM = 20s minimum, extra buffer for safety)
-const CHUNK_WORD_LIMIT = 500;
 
 /**
  * Generate SHA256 hash for content
@@ -33,34 +32,17 @@ function generateHash(content: string): string {
 }
 
 /**
- * Split content into chunks respecting blank line boundaries
+ * Split content into individual code entries (one chunk per code/error)
+ * Each entry is separated by double blank lines and represents a single error code
  */
 function chunkContent(content: string): string[] {
-  const blocks = content.split(/\n\n+/); // Split by blank lines
-  const chunks: string[] = [];
-  let currentChunk: string[] = [];
-  let currentWordCount = 0;
+  // Split by double blank lines - each block is one enriched error code
+  const blocks = content.split(/\n\n+/);
 
-  for (const block of blocks) {
-    const blockWords = block.trim().split(/\s+/).length;
-
-    // If adding this block would exceed limit and we have content, start new chunk
-    if (currentWordCount + blockWords > CHUNK_WORD_LIMIT && currentChunk.length > 0) {
-      chunks.push(currentChunk.join('\n\n'));
-      currentChunk = [block];
-      currentWordCount = blockWords;
-    } else {
-      currentChunk.push(block);
-      currentWordCount += blockWords;
-    }
-  }
-
-  // Add remaining content
-  if (currentChunk.length > 0) {
-    chunks.push(currentChunk.join('\n\n'));
-  }
-
-  return chunks.filter(chunk => chunk.trim().length > 0);
+  // Filter out empty blocks and return each as its own chunk
+  return blocks
+    .map(block => block.trim())
+    .filter(block => block.length > 0);
 }
 
 /**
