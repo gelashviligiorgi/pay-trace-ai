@@ -12,6 +12,7 @@
     "fetch:braintree": "tsx scripts/fetchers/braintree.cts",
     "fetch:checkout": "tsx scripts/fetchers/checkout.cts",
     "fetch:stripe": "tsx scripts/fetchers/stripe.cts",
+    "fetch:adyen": "tsx scripts/fetchers/adyen.cts",
     "ingest": "tsx scripts/ingest.cts",
     "docs:update": "npm run fetch && npm run ingest",
     "test:rag": "tsx src/rag/test-search.ts"

@@ -13,6 +13,8 @@ const { writeFileSync } = require('fs');
 const { join } = require('path');
 const { fetchBraintree } = require('./fetchers/braintree.cts');
 const { fetchCheckout } = require('./fetchers/checkout.cts');
+const { fetchAdyen } = require('./fetchers/adyen.cts');
+const { fetchStripe } = require('./fetchers/stripe.cts');
 
 /**
  * PSP fetcher registry
@@ -29,17 +31,16 @@ const PSP_FETCHERS = [
     fetcher: fetchCheckout,
     filename: 'Checkout.txt',
   },
-  // Add more PSPs here:
-  // {
-  //   name: 'Stripe',
-  //   fetcher: fetchStripe,
-  //   filename: 'Stripe.txt',
-  // },
-  // {
-  //   name: 'Adyen',
-  //   fetcher: fetchAdyen,
-  //   filename: 'Adyen.txt',
-  // },
+  {
+    name: 'Adyen',
+    fetcher: fetchAdyen,
+    filename: 'Adyen.txt',
+  },
+  {
+    name: 'Stripe',
+    fetcher: fetchStripe,
+    filename: 'Stripe.txt',
+  },
 ];
 
 /**

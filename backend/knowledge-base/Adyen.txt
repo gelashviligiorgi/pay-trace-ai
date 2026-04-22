@@ -1,0 +1,422 @@
+SOURCE: Adyen
+CODE: Integration type
+MEANING: An online payments integration.
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: An online payments integration.
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: Webhooks
+MEANING: You will receive refusal reasons with the Standard webhook. You don't need to subscribe to additional webhooks.
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: You will receive refusal reasons with the Standard webhook. You don't need to subscribe to additional webhooks.
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: refusalReason
+MEANING: A short explanation for why the payment was refused.
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: A short explanation for why the payment was refused.
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: resultCode
+MEANING: The category for the refused payment: Refused, Error, or Cancelled.
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The category for the refused payment: Refused, Error, or Cancelled.
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: refusalReasonCode
+MEANING: A numeral corresponding to the refusal reason.
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: A numeral corresponding to the refusal reason.
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 0
+MEANING: (none)
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: (none)
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 2
+MEANING: Refused
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Refused
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 3
+MEANING: Referral
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Referral
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 4
+MEANING: Acquirer Error
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Acquirer Error
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 5
+MEANING: Blocked Card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Blocked Card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 6
+MEANING: Expired Card
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has passed its expiration date
+FIX: Request updated card information with a valid expiration date from the customer.
+SYNONYMS: out of date, no longer valid, past expiration, card expired, date passed
+
+SOURCE: Adyen
+CODE: 7
+MEANING: Invalid Amount
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Adyen
+CODE: 8
+MEANING: Invalid Card Number
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Contact the issuing bank for clarification, or request a different payment method from the customer.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Adyen
+CODE: 9
+MEANING: Issuer Unavailable
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Issuer Unavailable
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 10
+MEANING: Not supported
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Not supported
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 11
+MEANING: 3D Not Authenticated
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: 3D Not Authenticated
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 12
+MEANING: Not enough balance
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Not enough balance
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 14
+MEANING: Acquirer Fraud
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Transaction flagged as potentially fraudulent
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+
+SOURCE: Adyen
+CODE: 15
+MEANING: Cancelled
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Cancelled
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 16
+MEANING: Shopper Cancelled
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Shopper Cancelled
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 17
+MEANING: Invalid Pin
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Adyen
+CODE: 18
+MEANING: Pin tries exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Pin tries exceeded
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 19
+MEANING: Pin validation not possible
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Pin validation not possible
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 20
+MEANING: FRAUD
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Transaction flagged as potentially fraudulent
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+
+SOURCE: Adyen
+CODE: 21
+MEANING: Not Submitted
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Not Submitted
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 22
+MEANING: FRAUD-CANCELLED
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Transaction flagged as potentially fraudulent
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+
+SOURCE: Adyen
+CODE: 23
+MEANING: Transaction Not Permitted
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Transaction Not Permitted
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 24
+MEANING: CVC Declined
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: CVC Declined
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 25
+MEANING: Restricted Card
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card or transaction type is restricted by the issuer
+FIX: Customer must contact their bank to resolve the issue. Request a different payment method.
+SYNONYMS: not allowed, blocked, prohibited, restricted transaction, not permitted
+
+SOURCE: Adyen
+CODE: 26
+MEANING: Revocation Of Auth
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Revocation Of Auth
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 27
+MEANING: Declined Non Generic
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Declined Non Generic
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 28
+MEANING: Withdrawal amount exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Withdrawal amount exceeded
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 29
+MEANING: Withdrawal count exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Withdrawal count exceeded
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 31
+MEANING: Issuer Suspected Fraud
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Transaction flagged as potentially fraudulent
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+
+SOURCE: Adyen
+CODE: 32
+MEANING: AVS Declined
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Address verification failed
+FIX: Verify the information with the customer and retry with corrected details.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 33
+MEANING: Card requires online pin
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Card requires online pin
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 34
+MEANING: No checking account available on Card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: No checking account available on Card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 35
+MEANING: No savings account available on Card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: No savings account available on Card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 36
+MEANING: Mobile pin required
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Mobile pin required
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 37
+MEANING: Contactless fallback
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Contactless fallback
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 38
+MEANING: Authentication required
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Authentication required
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 39
+MEANING: RReq not received from DS
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: RReq not received from DS
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 40
+MEANING: Current AID is in Penalty Box
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Current AID is in Penalty Box
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 41
+MEANING: CVM Required Restart Payment
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: CVM Required Restart Payment
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 42
+MEANING: 3DS Authentication Error
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: 3DS Authentication Error
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 46
+MEANING: Transaction blocked by Adyen to prevent excessive retry fees
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Transaction blocked by Adyen to prevent excessive retry fees
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Adyen
+CODE: 50
+MEANING: Token Revoked
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Token Revoked
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
