@@ -1,0 +1,1079 @@
+SOURCE: Stripe
+CODE: account_invalid
+MEANING: The account ID provided as a value for the Stripe-Account header is invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: api_key_expired
+MEANING: Your API key has expired
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Card has passed its expiration date
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: out of date, no longer valid, past expiration, card expired, date passed
+
+SOURCE: Stripe
+CODE: authentication_required
+MEANING: The payment requires authentication to proceed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The payment requires authentication to proceed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: balance_insufficient
+MEANING: The transfer or payout could not be completed because the associated account does not have a sufficient balance available
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The transfer or payout could not be completed because the associated account does not have a sufficient balance available
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: card_decline_rate_limit_exceeded
+MEANING: This card has been declined too many times
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: This card has been declined too many times
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: charge_already_captured
+MEANING: The charge you're attempting to capture has already been captured
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The charge you're attempting to capture has already been captured
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: charge_already_refunded
+MEANING: The charge you're attempting to refund has already been refunded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The charge you're attempting to refund has already been refunded
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: charge_disputed
+MEANING: The charge you're attempting to refund has been charged back
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The charge you're attempting to refund has been charged back
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: charge_exceeds_source_limit
+MEANING: This charge would cause you to exceed your rolling-window processing limit for this source type
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Transaction amount exceeds card or account limits
+FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
+SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+
+SOURCE: Stripe
+CODE: charge_expired_for_capture
+MEANING: The charge cannot be captured as the authorization has expired
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Card has passed its expiration date
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: out of date, no longer valid, past expiration, card expired, date passed
+
+SOURCE: Stripe
+CODE: charge_invalid_parameter
+MEANING: One or more provided parameters was not allowed for the given operation on the Charge
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: One or more provided parameters was not allowed for the given operation on the Charge
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: country_unsupported
+MEANING: Your platform attempted to create a custom account in a country that is not yet supported
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Your platform attempted to create a custom account in a country that is not yet supported
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: customer_max_payment_methods
+MEANING: The maximum number of payment methods has been reached for this customer
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The maximum number of payment methods has been reached for this customer
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: customer_max_subscriptions
+MEANING: The maximum number of subscriptions has been reached for this customer
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The maximum number of subscriptions has been reached for this customer
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: email_invalid
+MEANING: The email address is invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: expired_card
+MEANING: The card has expired
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Card has passed its expiration date
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: out of date, no longer valid, past expiration, card expired, date passed
+
+SOURCE: Stripe
+CODE: idempotency_key_in_use
+MEANING: The idempotency key provided is currently being used in another request
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The idempotency key provided is currently being used in another request
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: incorrect_address
+MEANING: The card's address is incorrect
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card's address is incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: incorrect_cvc
+MEANING: The card's security code is incorrect
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card's security code is incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: incorrect_number
+MEANING: The card number is incorrect
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card number is incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: incorrect_zip
+MEANING: The card's postal code is incorrect
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card's postal code is incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: instant_payouts_unsupported
+MEANING: The debit card provided does not support instant payouts
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The debit card provided does not support instant payouts
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: invalid_card_type
+MEANING: The card provided as an external account is not supported for payouts
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card provided as an external account is not supported for payouts
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: invalid_charge_amount
+MEANING: The specified amount is invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: invalid_cvc
+MEANING: The card's security code is invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: invalid_expiry_month
+MEANING: The card's expiration month is invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: invalid_expiry_year
+MEANING: The card's expiration year is invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: invalid_number
+MEANING: The card number is not a valid credit card number
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card number is not a valid credit card number
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: invalid_source_usage
+MEANING: The source cannot be used because it is not in the correct state
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The source cannot be used because it is not in the correct state
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: invoice_no_customer_line_items
+MEANING: An invoice cannot be generated for the specified customer as there are no pending invoice items
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: An invoice cannot be generated for the specified customer as there are no pending invoice items
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: invoice_no_subscription_line_items
+MEANING: An invoice cannot be generated for the specified subscription as there are no pending invoice items
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: An invoice cannot be generated for the specified subscription as there are no pending invoice items
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: invoice_not_editable
+MEANING: The specified invoice can no longer be edited
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The specified invoice can no longer be edited
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: invoice_payment_intent_requires_action
+MEANING: The payment attempt on the invoice requires additional user action to complete
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The payment attempt on the invoice requires additional user action to complete
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: invoice_upcoming_none
+MEANING: There is no upcoming invoice on the specified customer to preview
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: There is no upcoming invoice on the specified customer to preview
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: livemode_mismatch
+MEANING: Test and live mode API keys, requests, and objects are only available within the mode they are in
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Test and live mode API keys, requests, and objects are only available within the mode they are in
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: missing
+MEANING: Both a customer and source ID have been provided, but the source has not been saved to the customer
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Both a customer and source ID have been provided, but the source has not been saved to the customer
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: not_allowed_on_standard_account
+MEANING: Transfers and payouts on behalf of a standard connected account are not allowed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Transfers and payouts on behalf of a standard connected account are not allowed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: order_creation_failed
+MEANING: The order could not be created
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The order could not be created
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: order_required_settings
+MEANING: The order requires some payment method types to be enabled in your Dashboard
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The order requires some payment method types to be enabled in your Dashboard
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: order_status_invalid
+MEANING: The order cannot be updated because the status provided is either invalid or does not follow a valid state transition
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: order_upstream_timeout
+MEANING: The request timed out
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The request timed out
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: out_of_inventory
+MEANING: The SKU is out of inventory
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The SKU is out of inventory
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: parameter_invalid_empty
+MEANING: One or more required values were not provided
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: One or more required values were not provided
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: parameter_invalid_integer
+MEANING: One or more of the parameters requires an integer, but the values provided were a different type
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: One or more of the parameters requires an integer, but the values provided were a different type
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: parameter_invalid_string_blank
+MEANING: One or more values provided only included whitespace
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: One or more values provided only included whitespace
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: parameter_invalid_string_empty
+MEANING: One or more required string values is empty
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: One or more required string values is empty
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: parameter_missing
+MEANING: One or more required values are missing
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: One or more required values are missing
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: parameter_unknown
+MEANING: The request contains one or more unexpected parameters
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The request contains one or more unexpected parameters
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: parameters_exclusive
+MEANING: Two or more mutually exclusive parameters were provided
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Two or more mutually exclusive parameters were provided
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: payment_intent_authentication_failure
+MEANING: The provided payment method's state failed authentication
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The provided payment method's state failed authentication
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: payment_intent_incompatible_payment_method
+MEANING: The PaymentIntent expected a different PaymentMethod than what was provided
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The PaymentIntent expected a different PaymentMethod than what was provided
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: payment_intent_invalid_parameter
+MEANING: One or more provided parameters was not allowed for the given operation on the PaymentIntent
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: One or more provided parameters was not allowed for the given operation on the PaymentIntent
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: payment_intent_payment_attempt_failed
+MEANING: The latest payment attempt for the PaymentIntent has failed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The latest payment attempt for the PaymentIntent has failed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: payment_intent_unexpected_state
+MEANING: The PaymentIntent's state was incompatible with the operation you were trying to perform
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The PaymentIntent's state was incompatible with the operation you were trying to perform
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: payment_method_unactivated
+MEANING: The charge cannot be created as the payment method used has not been activated
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The charge cannot be created as the payment method used has not been activated
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: payment_method_unexpected_state
+MEANING: The provided payment method's state was incompatible with the operation you were trying to perform
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The provided payment method's state was incompatible with the operation you were trying to perform
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: payouts_not_allowed
+MEANING: Payouts have been disabled on the connected account
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Payouts have been disabled on the connected account
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: platform_api_key_expired
+MEANING: Your platform's API key has expired
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Card has passed its expiration date
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: out of date, no longer valid, past expiration, card expired, date passed
+
+SOURCE: Stripe
+CODE: postal_code_invalid
+MEANING: The postal code provided was incorrect
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The postal code provided was incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: processing_error
+MEANING: An error occurred while processing the card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: An error occurred while processing the card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: product_inactive
+MEANING: The product this SKU belongs to is no longer available for purchase
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The product this SKU belongs to is no longer available for purchase
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: rate_limit
+MEANING: Too many requests hit the API too quickly
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Too many requests hit the API too quickly
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: resource_already_exists
+MEANING: A resource with a user-specified ID already exists
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: A resource with a user-specified ID already exists
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: resource_missing
+MEANING: The ID provided is not valid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The ID provided is not valid
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: routing_number_invalid
+MEANING: The bank routing number provided is invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: secret_key_required
+MEANING: The API key provided is a publishable key, but a secret key is required
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The API key provided is a publishable key, but a secret key is required
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: sepa_unsupported_account
+MEANING: Your account does not support SEPA payments
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Your account does not support SEPA payments
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: setup_attempt_failed
+MEANING: The latest setup attempt for the SetupIntent has failed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The latest setup attempt for the SetupIntent has failed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: setup_intent_authentication_failure
+MEANING: The provided payment method's state failed authentication
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The provided payment method's state failed authentication
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: setup_intent_invalid_parameter
+MEANING: One or more provided parameters was not allowed for the given operation on the SetupIntent
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: One or more provided parameters was not allowed for the given operation on the SetupIntent
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: setup_intent_unexpected_state
+MEANING: The SetupIntent's state was incompatible with the operation you were trying to perform
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The SetupIntent's state was incompatible with the operation you were trying to perform
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: shipping_calculation_failed
+MEANING: Shipping calculation failed as the information provided was either incorrect or could not be verified
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Shipping calculation failed as the information provided was either incorrect or could not be verified
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: sku_inactive
+MEANING: The SKU is inactive and no longer available for purchase
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The SKU is inactive and no longer available for purchase
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: state_unsupported
+MEANING: Occurs when providing the legal_entity information for a U.S. custom account, if the provided state is not supported
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Occurs when providing the legal_entity information for a U.S. custom account, if the provided state is not supported
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: tax_id_invalid
+MEANING: The tax ID number provided is invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: taxes_calculation_failed
+MEANING: Tax calculation for the order failed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Tax calculation for the order failed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: testmode_charges_only
+MEANING: Your account has not been activated and can only make test charges
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Your account has not been activated and can only make test charges
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: tls_version_unsupported
+MEANING: Your integration is using an older version of TLS that is unsupported
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Your integration is using an older version of TLS that is unsupported
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: token_already_used
+MEANING: The token provided has already been used
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The token provided has already been used
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: token_in_use
+MEANING: The token provided is currently being used in another request
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The token provided is currently being used in another request
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: transfers_not_allowed
+MEANING: The requested transfer cannot be created
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The requested transfer cannot be created
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: upstream_order_creation_failed
+MEANING: The order could not be created
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The order could not be created
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: url_invalid
+MEANING: The URL provided is invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: approve_with_id
+MEANING: The payment cannot be authorized. The payment should be attempted again
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The payment cannot be authorized. The payment should be attempted again
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: call_issuer
+MEANING: The card has been declined for an unknown reason. Contact the card issuer for more information
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined for an unknown reason. Contact the card issuer for more information
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: card_not_supported
+MEANING: The card does not support this type of purchase
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card does not support this type of purchase
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: card_velocity_exceeded
+MEANING: The customer has exceeded the balance, credit limit, or transaction amount limit available on their card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Transaction amount exceeds card or account limits
+FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
+SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+
+SOURCE: Stripe
+CODE: currency_not_supported
+MEANING: The card does not support the specified currency
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card does not support the specified currency
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: do_not_honor
+MEANING: The card has been declined for an unknown reason. Contact the card issuer for more information
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined for an unknown reason. Contact the card issuer for more information
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: do_not_try_again
+MEANING: The card has been declined for an unknown reason. Contact the card issuer for more information
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined for an unknown reason. Contact the card issuer for more information
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: duplicate_transaction
+MEANING: A transaction with identical amount and credit card information was submitted very recently
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: A transaction with identical amount and credit card information was submitted very recently
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: fraudulent
+MEANING: The payment has been declined as Stripe suspects it is fraudulent
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Transaction flagged as potentially fraudulent
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+
+SOURCE: Stripe
+CODE: generic_decline
+MEANING: The card has been declined for an unknown reason. Contact the card issuer for more information
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined for an unknown reason. Contact the card issuer for more information
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: incorrect_pin
+MEANING: The PIN entered is incorrect
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The PIN entered is incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: insufficient_funds
+MEANING: The card has insufficient funds to complete the purchase
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Customer account does not have enough funds available
+FIX: Retry the transaction after customer adds funds to their account, or request an alternative payment method.
+SYNONYMS: not enough money, low balance, no funds, account empty, balance too low, insufficient balance
+
+SOURCE: Stripe
+CODE: invalid_account
+MEANING: The card, or account the card is connected to, is invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: invalid_amount
+MEANING: The payment amount is invalid, or exceeds the amount that is allowed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: invalid_pin
+MEANING: The PIN entered is incorrect
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The PIN entered is incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: issuer_not_available
+MEANING: The card issuer could not be reached, so the payment could not be authorized
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card issuer could not be reached, so the payment could not be authorized
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: lost_card
+MEANING: The payment has been declined because the card is reported lost
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has been reported lost by the cardholder
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: reported lost, missing card, lost card, cardholder reported lost
+
+SOURCE: Stripe
+CODE: merchant_blacklist
+MEANING: The payment has been declined because it matches a value on the Stripe user's blocklist
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The payment has been declined because it matches a value on the Stripe user's blocklist
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: new_account_information_available
+MEANING: The card, or account the card is connected to, is invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Stripe
+CODE: no_action_taken
+MEANING: The card has been declined for an unknown reason. Contact the card issuer for more information
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined for an unknown reason. Contact the card issuer for more information
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: not_permitted
+MEANING: The payment is not permitted
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The payment is not permitted
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: offline_pin_required
+MEANING: The card has been declined as it requires a PIN
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined as it requires a PIN
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: online_or_offline_pin_required
+MEANING: The card has been declined as it requires a PIN
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined as it requires a PIN
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: pickup_card
+MEANING: The customer cannot use this card to make this payment (it is possible it has been reported lost or stolen)
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has been reported lost by the cardholder
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: reported lost, missing card, lost card, cardholder reported lost
+
+SOURCE: Stripe
+CODE: pin_try_exceeded
+MEANING: The allowable number of PIN tries has been exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The allowable number of PIN tries has been exceeded
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: reenter_transaction
+MEANING: The payment could not be processed by the issuer for an unknown reason
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The payment could not be processed by the issuer for an unknown reason
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: restricted_card
+MEANING: The customer cannot use this card to make this payment (it is possible it has been reported lost or stolen)
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has been reported lost by the cardholder
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: reported lost, missing card, lost card, cardholder reported lost
+
+SOURCE: Stripe
+CODE: revocation_of_all_authorizations
+MEANING: The card has been declined for an unknown reason. Contact the card issuer for more information
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined for an unknown reason. Contact the card issuer for more information
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: revocation_of_authorization
+MEANING: The card has been declined for an unknown reason. Contact the card issuer for more information
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined for an unknown reason. Contact the card issuer for more information
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: security_violation
+MEANING: The card has been declined for an unknown reason. Contact the card issuer for more information
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined for an unknown reason. Contact the card issuer for more information
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: service_not_allowed
+MEANING: The card has been declined for an unknown reason. Contact the card issuer for more information
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined for an unknown reason. Contact the card issuer for more information
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: stolen_card
+MEANING: The payment has been declined because the card is reported stolen
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has been reported stolen by the cardholder
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: reported stolen, fraudulent card, stolen card, theft reported
+
+SOURCE: Stripe
+CODE: stop_payment_order
+MEANING: The card has been declined for an unknown reason. Contact the card issuer for more information
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined for an unknown reason. Contact the card issuer for more information
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: testmode_decline
+MEANING: A Stripe test card number was used
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: A Stripe test card number was used
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: transaction_not_allowed
+MEANING: The card has been declined for an unknown reason. Contact the card issuer for more information
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined for an unknown reason. Contact the card issuer for more information
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: try_again_later
+MEANING: The card has been declined for an unknown reason. Ask the customer to attempt the payment again
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: The card has been declined for an unknown reason. Ask the customer to attempt the payment again
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Stripe
+CODE: withdrawal_count_limit_exceeded
+MEANING: The customer has exceeded the balance or credit limit available on their card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Transaction amount exceeds card or account limits
+FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
+SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
