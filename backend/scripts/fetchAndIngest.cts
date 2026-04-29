@@ -15,6 +15,7 @@ const { fetchBraintree } = require('./fetchers/braintree.cts');
 const { fetchCheckout } = require('./fetchers/checkout.cts');
 const { fetchAdyen } = require('./fetchers/adyen.cts');
 const { fetchStripe } = require('./fetchers/stripe.cts');
+const { fetchPrimer } = require('./fetchers/primer.cts');
 
 /**
  * PSP fetcher registry
@@ -40,6 +41,11 @@ const PSP_FETCHERS = [
     name: 'Stripe',
     fetcher: fetchStripe,
     filename: 'Stripe.txt',
+  },
+  {
+    name: 'Primer',
+    fetcher: fetchPrimer,
+    filename: 'Primer.txt',
   },
 ];
 

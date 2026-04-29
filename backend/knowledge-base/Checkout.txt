@@ -36,10 +36,10 @@ SYNONYMS: payment declined, transaction rejected, authorization failed, payment 
 
 SOURCE: Checkout.com
 CODE: 50xxx
-MEANING: Payout declines
+MEANING: Payout and Refund declines
 TYPE: soft decline
 RETRYABLE: yes
-CAUSE: Issuing bank declined the transaction with reason: Payout declines
+CAUSE: Issuing bank declined the transaction with reason: Payout and Refund declines
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
 SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
 

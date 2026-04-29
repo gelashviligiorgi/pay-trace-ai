@@ -1,0 +1,656 @@
+SOURCE: Primer (Visa/Mastercard)
+CODE: 05
+MEANING: Do not honor - The issuing bank has blocked the transaction without providing a specific reason
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Issuing bank declined the transaction without specific reason
+FIX: Contact the issuing bank for clarification, or request a different payment method from the customer.
+SYNONYMS: transaction rejected, payment declined, issuer declined, bank refused, authorization denied
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 100
+MEANING: Do not honor - Generic decline from issuer
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Issuing bank declined the transaction without specific reason
+FIX: Contact the issuing bank for clarification, or request a different payment method from the customer.
+SYNONYMS: transaction rejected, payment declined, issuer declined, bank refused, authorization denied
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 51
+MEANING: Insufficient funds - The account does not have sufficient funds to complete the transaction
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Customer account does not have enough funds available
+FIX: Retry the transaction after customer adds funds to their account, or request an alternative payment method.
+SYNONYMS: not enough money, low balance, no funds, account empty, balance too low, insufficient balance
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: N4
+MEANING: Insufficient funds - Exceeds issuer withdrawal limit
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Customer account does not have enough funds available
+FIX: Retry the transaction after customer adds funds to their account, or request an alternative payment method.
+SYNONYMS: not enough money, low balance, no funds, account empty, balance too low, insufficient balance
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 61
+MEANING: Exceeds withdrawal amount limit - The customer exceeded their withdrawal limit
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Transaction amount exceeds card or account limits
+FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
+SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 65
+MEANING: Activity limit exceeded - The cardholder has exceeded the number of purchases allowed in a time period
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Transaction amount exceeds card or account limits
+FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
+SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 54
+MEANING: Expired card - The card has passed its expiration date and is no longer valid
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has passed its expiration date
+FIX: Request updated card information with a valid expiration date from the customer.
+SYNONYMS: out of date, no longer valid, past expiration, card expired, date passed
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 14
+MEANING: Invalid card number - The card number is not valid or does not exist
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Contact the issuing bank for clarification, or request a different payment method from the customer.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 06
+MEANING: Error - General card error occurred during processing
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Error - General card error occurred during processing
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 15
+MEANING: No such issuer - The card issuer could not be identified or does not exist
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Issuing bank declined the transaction with reason: No such issuer - The card issuer could not be identified or does not exist
+FIX: Contact the issuing bank for clarification, or request a different payment method from the customer.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 57
+MEANING: Transaction not permitted to cardholder - This type of transaction is not allowed for this card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Transaction not permitted to cardholder - This type of transaction is not allowed for this card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 58
+MEANING: Transaction not permitted to terminal - This transaction type is not supported by the terminal
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Transaction not permitted to terminal - This transaction type is not supported by the terminal
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 62
+MEANING: Restricted card - Service restricted, country or category blocked
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card or transaction type is restricted by the issuer
+FIX: Customer must contact their bank to resolve the issue. Request a different payment method.
+SYNONYMS: not allowed, blocked, prohibited, restricted transaction, not permitted
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 93
+MEANING: Transaction cannot be completed - Violation of law or regulation
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Transaction cannot be completed - Violation of law or regulation
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 59
+MEANING: Suspected fraud - The transaction has been flagged as potentially fraudulent
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Transaction flagged as potentially fraudulent
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 63
+MEANING: Security violation - A security breach or violation was detected
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Security violation - A security breach or violation was detected
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 07
+MEANING: Pickup card, special condition - Card should be retained due to security concerns
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has been flagged for retention by the issuer
+FIX: Customer must contact their bank to resolve the issue. Request a different payment method.
+SYNONYMS: hold card, retain card, confiscate card, card pickup, seize card
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 04
+MEANING: Pickup card - The card should be captured and retained
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has been flagged for retention by the issuer
+FIX: Customer must contact their bank to resolve the issue. Request a different payment method.
+SYNONYMS: hold card, retain card, confiscate card, card pickup, seize card
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 41
+MEANING: Lost card - The card has been reported as lost by the cardholder
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has been reported lost by the cardholder
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: reported lost, missing card, lost card, cardholder reported lost
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 43
+MEANING: Stolen card - The card has been reported as stolen by the cardholder
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card has been reported stolen by the cardholder
+FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
+SYNONYMS: reported stolen, fraudulent card, stolen card, theft reported
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 55
+MEANING: Incorrect PIN - The PIN entered is incorrect
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Incorrect PIN - The PIN entered is incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 75
+MEANING: PIN tries exceeded - Maximum number of PIN entry attempts has been exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PIN tries exceeded - Maximum number of PIN entry attempts has been exceeded
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 86
+MEANING: PIN validation not possible - Unable to validate the PIN at this time
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: PIN validation not possible - Unable to validate the PIN at this time
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 88
+MEANING: Cryptographic failure - PIN encryption or validation failed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Cryptographic failure - PIN encryption or validation failed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 91
+MEANING: Issuer unavailable - The card issuer is temporarily unavailable or offline
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Issuer unavailable - The card issuer is temporarily unavailable or offline
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 96
+MEANING: System malfunction - A technical error occurred in the payment system
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: System malfunction - A technical error occurred in the payment system
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 19
+MEANING: Re-enter transaction - The transaction should be attempted again
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Re-enter transaction - The transaction should be attempted again
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 92
+MEANING: Unable to route transaction - The transaction could not be routed to the issuer
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Unable to route transaction - The transaction could not be routed to the issuer
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 94
+MEANING: Duplicate transaction - This transaction appears to be a duplicate
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Duplicate transaction - This transaction appears to be a duplicate
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 65
+MEANING: Authentication required - Additional authentication is needed to complete this transaction (Visa specific)
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Authentication required - Additional authentication is needed to complete this transaction (Visa specific)
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 1A
+MEANING: Authentication required - Additional authentication is needed to complete this transaction (Mastercard specific)
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Authentication required - Additional authentication is needed to complete this transaction (Mastercard specific)
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: N7
+MEANING: CVV2 failure - The card security code (CVV) does not match
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: CVV/security code does not match
+FIX: Verify the information with the customer and retry with corrected details.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 82
+MEANING: Negative CAM, dCVV, iCVV, or CVV results - Card verification failed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: CVV/security code does not match
+FIX: Verify the information with the customer and retry with corrected details.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 12
+MEANING: Invalid transaction - The transaction format or details are invalid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 13
+MEANING: Invalid amount - The transaction amount is invalid or out of range
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 30
+MEANING: Format error - The transaction message format is incorrect
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Format error - The transaction message format is incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 76
+MEANING: Invalid product codes - The product or service codes are not valid
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 39
+MEANING: No credit account - No credit account exists for this card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: No credit account - No credit account exists for this card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 52
+MEANING: No checking account - No checking account exists for this card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: No checking account - No checking account exists for this card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 53
+MEANING: No savings account - No savings account exists for this card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: No savings account - No savings account exists for this card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 78
+MEANING: Blocked, first use - New card blocked on first use (activation required)
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Blocked, first use - New card blocked on first use (activation required)
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 01
+MEANING: Refer to card issuer - The cardholder should contact their issuing bank
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Refer to card issuer - The cardholder should contact their issuing bank
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 02
+MEANING: Refer to card issuer, special condition - Contact issuer for special condition
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Refer to card issuer, special condition - Contact issuer for special condition
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 03
+MEANING: Invalid merchant - The merchant ID is invalid or not recognized by the issuer
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 85
+MEANING: No reason to decline - Transaction approved but flagged for monitoring
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: No reason to decline - Transaction approved but flagged for monitoring
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: R0
+MEANING: Stop payment order - The cardholder has requested to stop payment
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Stop payment order - The cardholder has requested to stop payment
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: R1
+MEANING: Revocation of authorization - Previous authorization has been revoked
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Revocation of authorization - Previous authorization has been revoked
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: N3
+MEANING: Cash service not available - Cash services are not available for this card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Cash service not available - Cash services are not available for this card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: N8
+MEANING: Transaction amount exceeds maximum - Amount exceeds the maximum allowed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Transaction amount exceeds maximum - Amount exceeds the maximum allowed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: Q1
+MEANING: Card authentication failed - Card failed authentication check
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Card authentication failed - Card failed authentication check
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 03
+MEANING: Invalid merchant - Merchant is not valid for this card network
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Payment information provided is invalid or incorrect
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 58
+MEANING: Transaction not allowed - Merchant not permitted to perform this transaction type
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Transaction not allowed - Merchant not permitted to perform this transaction type
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 1C
+MEANING: Chip card requires chip reader - Card with chip must be read using chip reader
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Chip card requires chip reader - Card with chip must be read using chip reader
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 1S
+MEANING: Recurring payment cancelled - The recurring payment has been cancelled by cardholder
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Recurring payment cancelled - The recurring payment has been cancelled by cardholder
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 5T
+MEANING: Regulatory decline - Transaction declined due to regulatory requirements
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Regulatory decline - Transaction declined due to regulatory requirements
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: CV
+MEANING: Card type verification error - Card type could not be verified
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Card type verification error - Card type could not be verified
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: XA
+MEANING: Forward to issuer - Transaction should be forwarded to the issuer
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Forward to issuer - Transaction should be forwarded to the issuer
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: XD
+MEANING: Forward to issuer - Retry transaction
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Forward to issuer - Retry transaction
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: B1
+MEANING: Surcharge not permitted - Surcharge amount not permitted on this card
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Surcharge not permitted - Surcharge amount not permitted on this card
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: B2
+MEANING: Surcharge not supported - Surcharge not supported by issuer
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Surcharge not supported - Surcharge not supported by issuer
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: C2
+MEANING: CVV2 required - CVV2 value is required for this transaction
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: CVV/security code does not match
+FIX: Verify the information with the customer and retry with corrected details.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: A1
+MEANING: AVS failed - Address verification failed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Address verification failed
+FIX: Verify the information with the customer and retry with corrected details.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: Z3
+MEANING: Unable to verify address - Address could not be verified
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Unable to verify address - Address could not be verified
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 68
+MEANING: Response received too late - Issuer response timeout
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Response received too late - Issuer response timeout
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 80
+MEANING: Network error - Communication error with card network
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Network error - Communication error with card network
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 81
+MEANING: Cryptographic error - Encryption or security error occurred
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Cryptographic error - Encryption or security error occurred
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 00
+MEANING: Approved - Transaction approved successfully
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Approved - Transaction approved successfully
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 08
+MEANING: Honor with identification - Approve transaction after verifying cardholder ID
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Honor with identification - Approve transaction after verifying cardholder ID
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 10
+MEANING: Approved for partial amount - Transaction approved for partial amount only
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Approved for partial amount - Transaction approved for partial amount only
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 11
+MEANING: Approved VIP - Transaction approved for VIP customer
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Approved VIP - Transaction approved for VIP customer
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 38
+MEANING: Allowable PIN tries exceeded - Maximum PIN attempts exceeded
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Allowable PIN tries exceeded - Maximum PIN attempts exceeded
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 62
+MEANING: Restricted card - Card restricted by issuer policy
+TYPE: hard decline
+RETRYABLE: no
+CAUSE: Card or transaction type is restricted by the issuer
+FIX: Customer must contact their bank to resolve the issue. Request a different payment method.
+SYNONYMS: not allowed, blocked, prohibited, restricted transaction, not permitted
+
+SOURCE: Primer (Visa/Mastercard)
+CODE: 64
+MEANING: Transaction does not fulfill AML requirement - Anti-money laundering check failed
+TYPE: soft decline
+RETRYABLE: yes
+CAUSE: Issuing bank declined the transaction with reason: Transaction does not fulfill AML requirement - Anti-money laundering check failed
+FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
+SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
