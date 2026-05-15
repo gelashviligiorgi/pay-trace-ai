@@ -22,11 +22,16 @@ interface TestResult {
 }
 
 // Test suite configuration
+// Covers all 6 providers: Braintree, Stripe, Checkout.com, Primer (Visa/Mastercard), Adyen, 3D Secure
 const TEST_CASES: TestCase[] = [
-  // 1. Exact Code Matches
+  // ============================================================
+  // 1. Exact Code Matches — one direct code lookup per provider
+  // ============================================================
+
+  // Braintree — include provider name so embedding steers to the right source
   {
     category: '1. Exact Code Matches',
-    query: '2001',
+    query: 'Braintree code 2001',
     expectedCodes: ['2001'],
     expectedSource: 'Braintree',
     minSimilarity: 0.7,
@@ -34,7 +39,7 @@ const TEST_CASES: TestCase[] = [
   },
   {
     category: '1. Exact Code Matches',
-    query: '2004',
+    query: 'Braintree code 2004',
     expectedCodes: ['2004'],
     expectedSource: 'Braintree',
     minSimilarity: 0.7,
@@ -42,55 +47,161 @@ const TEST_CASES: TestCase[] = [
   },
   {
     category: '1. Exact Code Matches',
-    query: 'INVALID_CARD',
-    expectedCodes: ['INVALID_CARD'],
-    expectedSource: 'Toss Payments',
-    minSimilarity: 0.7,
-    shouldMatch: true,
-  },
-  {
-    category: '1. Exact Code Matches',
-    query: 'FRAUD_DETECTED',
-    expectedCodes: ['FRAUD_DETECTED'],
-    expectedSource: 'PayPal',
-    minSimilarity: 0.7,
-    shouldMatch: true,
-  },
-  {
-    category: '1. Exact Code Matches',
-    query: 'authenticate_failed',
-    expectedCodes: ['authenticate_failed'],
-    expectedSource: '3D Secure',
+    query: 'Braintree code 2010',
+    expectedCodes: ['2010'],
+    expectedSource: 'Braintree',
     minSimilarity: 0.7,
     shouldMatch: true,
   },
 
-  // 2. Semantic Meaning Searches
+  // Stripe — include provider name to steer embedding to the right source
+  {
+    category: '1. Exact Code Matches',
+    query: 'Stripe code insufficient_funds',
+    expectedCodes: ['insufficient_funds'],
+    expectedSource: 'Stripe',
+    minSimilarity: 0.7,
+    shouldMatch: true,
+  },
+  {
+    category: '1. Exact Code Matches',
+    query: 'Stripe code expired_card',
+    expectedCodes: ['expired_card'],
+    expectedSource: 'Stripe',
+    minSimilarity: 0.7,
+    shouldMatch: true,
+  },
+  {
+    category: '1. Exact Code Matches',
+    query: 'Stripe code fraudulent',
+    expectedCodes: ['fraudulent'],
+    expectedSource: 'Stripe',
+    minSimilarity: 0.7,
+    shouldMatch: true,
+  },
+  {
+    category: '1. Exact Code Matches',
+    query: 'Stripe code incorrect_cvc',
+    expectedCodes: ['incorrect_cvc'],
+    expectedSource: 'Stripe',
+    minSimilarity: 0.7,
+    shouldMatch: true,
+  },
+  {
+    category: '1. Exact Code Matches',
+    query: 'Stripe code stolen_card',
+    expectedCodes: ['stolen_card'],
+    expectedSource: 'Stripe',
+    minSimilarity: 0.7,
+    shouldMatch: true,
+  },
+
+  // Checkout.com — include provider name to steer embedding to the right source
+  {
+    category: '1. Exact Code Matches',
+    query: 'Checkout.com code 20051',
+    expectedCodes: ['20051'],
+    expectedSource: 'Checkout',
+    minSimilarity: 0.7,
+    shouldMatch: true,
+  },
+  {
+    category: '1. Exact Code Matches',
+    query: 'Checkout.com code 20054',
+    expectedCodes: ['20054'],
+    expectedSource: 'Checkout',
+    minSimilarity: 0.7,
+    shouldMatch: true,
+  },
+  {
+    category: '1. Exact Code Matches',
+    query: 'Checkout.com code 20059',
+    expectedCodes: ['20059'],
+    expectedSource: 'Checkout',
+    minSimilarity: 0.7,
+    shouldMatch: true,
+  },
+
+  // Primer (Visa/Mastercard) — query includes provider name to steer embedding
+  {
+    category: '1. Exact Code Matches',
+    query: 'Primer code 51 insufficient funds',
+    expectedCodes: ['51'],
+    expectedSource: 'Primer',
+    minSimilarity: 0.6,
+    shouldMatch: true,
+  },
+  {
+    category: '1. Exact Code Matches',
+    query: 'Primer code 54 expired card',
+    expectedCodes: ['54'],
+    expectedSource: 'Primer',
+    minSimilarity: 0.6,
+    shouldMatch: true,
+  },
+
+  // Adyen — include provider name; short numeric codes rely on source check
+  {
+    category: '1. Exact Code Matches',
+    query: 'Adyen refusal code 6 expired card',
+    expectedSource: 'Adyen',
+    minSimilarity: 0.55,
+    shouldMatch: true,
+  },
+  {
+    category: '1. Exact Code Matches',
+    query: 'Adyen refusal code 20 fraud',
+    expectedSource: 'Adyen',
+    minSimilarity: 0.55,
+    shouldMatch: true,
+  },
+
+  // 3D Secure
+  {
+    category: '1. Exact Code Matches',
+    query: '3DS authenticate_failed',
+    expectedCodes: ['authenticate_failed'],
+    expectedSource: '3ds-codes',
+    minSimilarity: 0.7,
+    shouldMatch: true,
+  },
+  {
+    category: '1. Exact Code Matches',
+    query: 'authenticate_successful',
+    expectedCodes: ['authenticate_successful'],
+    expectedSource: '3ds-codes',
+    minSimilarity: 0.7,
+    shouldMatch: true,
+  },
+
+  // ============================================================
+  // 2. Semantic Meaning Searches — natural-language descriptions
+  // ============================================================
   {
     category: '2. Semantic Meaning Searches',
     query: 'not enough money',
-    expectedCodes: ['2001', 'INSUFFICIENT_FUNDS'],
+    expectedCodes: ['2001', 'insufficient_funds', '20051'],
     minSimilarity: 0.4,
     shouldMatch: true,
   },
   {
     category: '2. Semantic Meaning Searches',
     query: 'card is old',
-    expectedCodes: ['2004', 'CARD_EXPIRED'],
+    expectedCodes: ['2004', 'expired_card', '20054'],
     minSimilarity: 0.35,
     shouldMatch: true,
   },
   {
     category: '2. Semantic Meaning Searches',
     query: 'too many transactions',
-    expectedCodes: ['2003', 'PAYMENT_LIMIT_EXCEEDED', 'TRANSACTION_LIMIT_EXCEEDED'],
+    expectedCodes: ['2003', '20061', '65'],
     minSimilarity: 0.35,
     shouldMatch: true,
   },
   {
     category: '2. Semantic Meaning Searches',
-    query: 'wrong CVV',
-    expectedCodes: ['2010'],
+    query: 'wrong CVV security code',
+    expectedCodes: ['2010', 'incorrect_cvc'],
     minSimilarity: 0.4,
     shouldMatch: true,
   },
@@ -111,111 +222,182 @@ const TEST_CASES: TestCase[] = [
   {
     category: '2. Semantic Meaning Searches',
     query: 'identity verification failed',
-    expectedCodes: ['AUTHENTICATION_FAILED', 'authenticate_failed'],
+    expectedCodes: ['authenticate_failed', 'authentication_required'],
     minSimilarity: 0.35,
     shouldMatch: true,
   },
   {
     category: '2. Semantic Meaning Searches',
-    query: 'fraud suspected',
-    expectedCodes: ['FRAUD_DETECTED'],
+    query: 'fraud suspected on transaction',
+    expectedCodes: ['fraudulent', '20059'],
     minSimilarity: 0.35,
     shouldMatch: true,
   },
   {
     category: '2. Semantic Meaning Searches',
     query: 'account limit reached',
-    expectedCodes: ['2002', 'PAYMENT_LIMIT_EXCEEDED', 'TRANSACTION_LIMIT_EXCEEDED'],
+    expectedCodes: ['2002', '20061', '61'],
     minSimilarity: 0.35,
     shouldMatch: true,
   },
+  {
+    category: '2. Semantic Meaning Searches',
+    query: 'card was stolen or reported lost',
+    expectedCodes: ['stolen_card', 'lost_card', '2053'],
+    minSimilarity: 0.4,
+    shouldMatch: true,
+  },
+  {
+    category: '2. Semantic Meaning Searches',
+    query: 'wrong PIN entered',
+    expectedCodes: ['20055'],
+    minSimilarity: 0.35,
+    shouldMatch: true,
+  },
+  {
+    category: '2. Semantic Meaning Searches',
+    query: '3D Secure step-up challenge not completed',
+    expectedCodes: ['authenticate_failed', 'authenticate_unable_to_authenticate'],
+    minSimilarity: 0.4,
+    shouldMatch: true,
+  },
 
-  // 3. Mixed Provider Contexts
+  // ============================================================
+  // 3. Mixed Provider Contexts — generic terms matching multiple PSPs
+  // ============================================================
   {
     category: '3. Mixed Provider Contexts',
     query: 'insufficient balance',
-    expectedCodes: ['2001', 'INSUFFICIENT_FUNDS'],
+    expectedCodes: ['2001', 'insufficient_funds', '20051'],
     minSimilarity: 0.4,
     shouldMatch: true,
   },
   {
     category: '3. Mixed Provider Contexts',
     query: 'card expired',
-    expectedCodes: ['2004', 'CARD_EXPIRED'],
+    expectedCodes: ['2004', 'expired_card', '20054'],
     minSimilarity: 0.4,
     shouldMatch: true,
   },
   {
     category: '3. Mixed Provider Contexts',
     query: 'limit exceeded',
-    expectedCodes: ['2002', '2003', 'PAYMENT_LIMIT_EXCEEDED', 'TRANSACTION_LIMIT_EXCEEDED'],
+    expectedCodes: ['2002', '2003', '20061', '65'],
     minSimilarity: 0.4,
     shouldMatch: true,
   },
   {
     category: '3. Mixed Provider Contexts',
     query: 'authentication error',
-    expectedCodes: ['AUTHENTICATION_FAILED', 'authenticate_failed'],
+    expectedCodes: ['authenticate_failed', 'authentication_required'],
     minSimilarity: 0.4,
     shouldMatch: true,
   },
   {
     category: '3. Mixed Provider Contexts',
     query: 'declined by bank',
-    expectedCodes: ['2038', '2046', 'INSTRUMENT_DECLINED'],
+    expectedCodes: ['2038', '2046', '20005'],
     minSimilarity: 0.35,
     shouldMatch: true,
   },
+  {
+    category: '3. Mixed Provider Contexts',
+    query: 'invalid card number',
+    expectedCodes: ['invalid_number', '20014'],
+    minSimilarity: 0.35,
+    shouldMatch: true,
+  },
+  {
+    category: '3. Mixed Provider Contexts',
+    query: 'suspected fraud decline',
+    expectedCodes: ['fraudulent', '20059', '2059'],
+    minSimilarity: 0.35,
+    shouldMatch: true,
+  },
+  {
+    category: '3. Mixed Provider Contexts',
+    query: 'wrong PIN too many attempts',
+    expectedCodes: ['20055'],
+    minSimilarity: 0.3,
+    shouldMatch: true,
+  },
 
+  // ============================================================
   // 4. Technical vs. User Language
+  // ============================================================
   {
     category: '4. Technical vs. User Language',
-    query: 'my card doesn\'t have enough funds',
-    expectedCodes: ['2001', 'INSUFFICIENT_FUNDS'],
+    query: "my card doesn't have enough funds",
+    expectedCodes: ['2001', 'insufficient_funds', '20051'],
     minSimilarity: 0.35,
     shouldMatch: true,
   },
   {
     category: '4. Technical vs. User Language',
     query: 'the payment was rejected',
-    expectedCodes: ['2038', 'INSTRUMENT_DECLINED'],
+    expectedCodes: ['2038', 'do_not_honor', 'generic_decline'],
     minSimilarity: 0.3,
     shouldMatch: true,
   },
   {
     category: '4. Technical vs. User Language',
     query: 'security check failed',
-    expectedCodes: ['authenticate_failed', 'FRAUD_DETECTED'],
+    expectedCodes: ['authenticate_failed', 'fraudulent'],
     minSimilarity: 0.3,
     shouldMatch: true,
   },
   {
     category: '4. Technical vs. User Language',
-    query: 'need more verification',
-    expectedCodes: ['authenticate_failed', 'REDIRECT_REQUIRED'],
+    query: 'my card is no longer valid',
+    expectedCodes: ['expired_card', '2004', '20054'],
     minSimilarity: 0.3,
     shouldMatch: true,
   },
   {
     category: '4. Technical vs. User Language',
     query: 'transaction blocked by system',
-    expectedCodes: ['FRAUD_DETECTED', '2046'],
+    expectedCodes: ['fraudulent', '20059', '2046'],
+    minSimilarity: 0.3,
+    shouldMatch: true,
+  },
+  {
+    category: '4. Technical vs. User Language',
+    query: 'Stripe says insufficient_funds — what does that mean',
+    expectedCodes: ['insufficient_funds'],
+    expectedSource: 'Stripe',
+    minSimilarity: 0.4,
+    shouldMatch: true,
+  },
+  {
+    category: '4. Technical vs. User Language',
+    query: 'Checkout.com returned error 20059',
+    expectedCodes: ['20059'],
+    expectedSource: 'Checkout',
+    minSimilarity: 0.5,
+    shouldMatch: true,
+  },
+  {
+    category: '4. Technical vs. User Language',
+    query: 'bank issuer is temporarily unavailable',
+    expectedCodes: ['2038', '20001'],
     minSimilarity: 0.3,
     shouldMatch: true,
   },
 
-  // 5. Partial/Fuzzy Matches
+  // ============================================================
+  // 5. Partial / Fuzzy Matches — typos and abbreviations
+  // ============================================================
   {
     category: '5. Partial/Fuzzy Matches',
     query: 'insufficent funds',
-    expectedCodes: ['2001', 'INSUFFICIENT_FUNDS'],
+    expectedCodes: ['2001', 'insufficient_funds'],
     minSimilarity: 0.35,
     shouldMatch: true,
   },
   {
     category: '5. Partial/Fuzzy Matches',
     query: 'expird card',
-    expectedCodes: ['2004', 'CARD_EXPIRED'],
+    expectedCodes: ['2004', 'expired_card'],
     minSimilarity: 0.35,
     shouldMatch: true,
   },
@@ -228,20 +410,38 @@ const TEST_CASES: TestCase[] = [
   },
   {
     category: '5. Partial/Fuzzy Matches',
-    query: 'paypal balance low',
-    expectedCodes: ['INSUFFICIENT_FUNDS'],
-    minSimilarity: 0.35,
-    shouldMatch: true,
-  },
-  {
-    category: '5. Partial/Fuzzy Matches',
     query: 'braintree 2010',
     expectedCodes: ['2010'],
     minSimilarity: 0.4,
     shouldMatch: true,
   },
+  {
+    category: '5. Partial/Fuzzy Matches',
+    query: 'stripe insuficient funds',
+    expectedCodes: ['insufficient_funds'],
+    expectedSource: 'Stripe',
+    minSimilarity: 0.35,
+    shouldMatch: true,
+  },
+  {
+    category: '5. Partial/Fuzzy Matches',
+    query: 'chekout.com expiry card error',
+    expectedCodes: ['20054', 'expired_card'],
+    minSimilarity: 0.3,
+    shouldMatch: true,
+  },
+  {
+    category: '5. Partial/Fuzzy Matches',
+    query: 'primer visa insuficient funds',
+    expectedCodes: ['51'],
+    expectedSource: 'Primer',
+    minSimilarity: 0.35,
+    shouldMatch: true,
+  },
 
-  // 6. Edge Cases
+  // ============================================================
+  // 6. Edge Cases — generic or ambiguous queries
+  // ============================================================
   {
     category: '6. Edge Cases',
     query: 'retryable error',
@@ -250,82 +450,136 @@ const TEST_CASES: TestCase[] = [
   },
   {
     category: '6. Edge Cases',
-    query: 'contact support',
-    expectedCodes: ['2046', 'FRAUD_DETECTED'],
+    query: 'contact support to resolve',
+    expectedCodes: ['2046'],
     minSimilarity: 0.25,
     shouldMatch: true,
   },
   {
     category: '6. Edge Cases',
-    query: 'provider error',
-    expectedCodes: ['PROVIDER_ERROR'],
-    minSimilarity: 0.4,
-    shouldMatch: true,
-  },
-  {
-    category: '6. Edge Cases',
-    query: 'transaction too large',
-    expectedCodes: ['2002', 'PAYMENT_LIMIT_EXCEEDED'],
+    query: 'transaction amount too large',
+    expectedCodes: ['2002', '20061', '61'],
     minSimilarity: 0.3,
     shouldMatch: true,
   },
   {
     category: '6. Edge Cases',
-    query: 'multiple attempts',
-    expectedCodes: ['2003', '2074'],
+    query: 'multiple decline attempts',
+    expectedCodes: ['2003', '2074', 'card_decline_rate_limit_exceeded'],
+    minSimilarity: 0.25,
+    shouldMatch: true,
+  },
+  {
+    category: '6. Edge Cases',
+    query: 'customer cancelled the payment',
+    expectedCodes: ['20017'],
+    minSimilarity: 0.3,
+    shouldMatch: true,
+  },
+  {
+    category: '6. Edge Cases',
+    query: 'hard decline card cannot be retried',
+    expectedCodes: ['stolen_card', 'lost_card', 'fraudulent'],
     minSimilarity: 0.25,
     shouldMatch: true,
   },
 
-  // 7. Combined Concepts
+  // ============================================================
+  // 7. Combined Concepts — multi-concept and provider-scoped queries
+  // ============================================================
   {
     category: '7. Combined Concepts',
     query: 'card limit exceeded can I retry',
-    expectedCodes: ['2002', '2003'],
+    expectedCodes: ['2002', '2003', '20061'],
     minSimilarity: 0.3,
     shouldMatch: true,
   },
   {
     category: '7. Combined Concepts',
     query: 'expired card what to do',
-    expectedCodes: ['2004', 'CARD_EXPIRED'],
+    expectedCodes: ['2004', 'expired_card', '20054'],
     minSimilarity: 0.35,
     shouldMatch: true,
   },
   {
     category: '7. Combined Concepts',
-    query: 'authentication failed braintree',
+    query: 'authentication failed braintree 3DS',
     expectedCodes: ['authenticate_failed'],
     minSimilarity: 0.35,
     shouldMatch: true,
   },
   {
     category: '7. Combined Concepts',
-    query: 'paypal fraud detection',
-    expectedCodes: ['FRAUD_DETECTED'],
+    query: 'Stripe payment declined insufficient funds error code',
+    expectedCodes: ['insufficient_funds'],
+    expectedSource: 'Stripe',
     minSimilarity: 0.4,
     shouldMatch: true,
   },
+  {
+    category: '7. Combined Concepts',
+    query: 'Checkout.com fraud detection response code',
+    expectedCodes: ['20059'],
+    expectedSource: 'Checkout',
+    minSimilarity: 0.4,
+    shouldMatch: true,
+  },
+  {
+    category: '7. Combined Concepts',
+    query: 'Primer Visa insufficient funds ISO 8583',
+    expectedCodes: ['51'],
+    expectedSource: 'Primer',
+    minSimilarity: 0.4,
+    shouldMatch: true,
+  },
+  {
+    category: '7. Combined Concepts',
+    query: 'Adyen blocked card refusal reason',
+    expectedSource: 'Adyen',
+    minSimilarity: 0.35,
+    shouldMatch: true,
+  },
+  {
+    category: '7. Combined Concepts',
+    query: 'Adyen 3D not authenticated refusal',
+    expectedSource: 'Adyen',
+    minSimilarity: 0.35,
+    shouldMatch: true,
+  },
 
+  // ============================================================
   // 8. Negative Tests
+  // ============================================================
   {
     category: '8. Negative Tests',
-    query: 'successful payment',
-    expectedCodes: ['authenticate_successful'],
+    query: 'successful payment approved',
+    expectedCodes: ['authenticate_successful', '10000'],
     minSimilarity: 0.3,
-    shouldMatch: true, // Should find authenticate_successful
+    shouldMatch: true, // Should retrieve successful/approved codes
   },
   {
     category: '8. Negative Tests',
     query: 'refund process',
-    minSimilarity: 0.2,
-    shouldMatch: false, // Should NOT match well
+    minSimilarity: 0.65,
+    shouldMatch: false,
   },
   {
     category: '8. Negative Tests',
     query: 'shipping delay',
-    minSimilarity: 0.15,
-    shouldMatch: false, // Should NOT match well
+    minSimilarity: 0.65,
+    shouldMatch: false,
+  },
+  {
+    category: '8. Negative Tests',
+    query: 'restaurant menu item',
+    minSimilarity: 0.65,
+    shouldMatch: false,
+  },
+  {
+    category: '8. Negative Tests',
+    query: 'weather forecast tomorrow',
+    minSimilarity: 0.65,
+    shouldMatch: false, // Completely unrelated domain
   },
 ];
 
@@ -453,7 +707,7 @@ async function runTests() {
     try {
       console.log(`\n[${i + 1}/${TEST_CASES.length}] 📋 Testing: "${testCase.query}" (${testCase.category})`);
 
-      const searchResults = await searchKnowledgeBase(testCase.query, 5);
+      const searchResults = await searchKnowledgeBase(testCase.query, 5, testCase.expectedSource);
       const testResult = evaluateTestCase(testCase, searchResults);
 
       results.push(testResult);

@@ -22,7 +22,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
 
 const KNOWLEDGE_BASE_PATH = join(__dirname, '../knowledge-base');
 const BATCH_SIZE = 1; // Process 1 chunk at a time due to strict rate limits
-const DELAY_MS = 30000; // 30 seconds between requests (3 RPM = 20s minimum, extra buffer for safety)
+const DELAY_MS = 23000; // 23 seconds between requests (~3 RPM with buffer)
 
 /**
  * Generate SHA256 hash for content
@@ -48,7 +48,7 @@ function chunkContent(content: string): string[] {
 /**
  * Process chunks in batches and get embeddings with rate limiting
  */
-async function embedChunks(chunks: string[], fileName: string): Promise<number[][]> {
+async function embedChunks(chunks: string[]): Promise<number[][]> {
   const allEmbeddings: number[][] = [];
   const totalBatches = Math.ceil(chunks.length / BATCH_SIZE);
 
@@ -79,10 +79,12 @@ async function embedChunks(chunks: string[], fileName: string): Promise<number[]
         });
         success = true;
       } catch (error: any) {
-        if (error.statusCode === 429 && retries < 2) {
+        const isRateLimit = error.statusCode === 429;
+        const isNetworkError = !error.statusCode || error.statusCode === 0;
+        if ((isRateLimit || isNetworkError) && retries < 2) {
           retries++;
-          const waitTime = 60000; // Wait 60 seconds on rate limit
-          console.log(`  ⚠️  Rate limit hit. Waiting ${waitTime / 1000}s before retry ${retries}/3...`);
+          const waitTime = isRateLimit ? 60000 : 10000;
+          console.log(`  ⚠️  ${isRateLimit ? 'Rate limit' : 'Network error'} (${error.message}). Waiting ${waitTime / 1000}s before retry ${retries}/3...`);
           await new Promise(resolve => setTimeout(resolve, waitTime));
         } else {
           throw error;
@@ -146,7 +148,7 @@ async function ingestText(filePath: string, fileName: string): Promise<{ inserte
   let embeddings: number[][] = [];
   if (newChunks.length > 0) {
     console.log(`  Generating embeddings for ${newChunks.length} new chunks...`);
-    embeddings = await embedChunks(newChunks.map(ch => ch.content), fileName);
+    embeddings = await embedChunks(newChunks.map(ch => ch.content));
   } else {
     console.log(`  ✓ No new chunks to process`);
   }
@@ -202,7 +204,7 @@ async function main() {
   try {
     // Read all .txt files from knowledge-base folder
     const files = await readdir(KNOWLEDGE_BASE_PATH);
-    const txtFiles = files.filter(f => f.endsWith('.txt'));
+    const txtFiles = files.filter((f: string) => f.endsWith('.txt'));
 
     if (txtFiles.length === 0) {
       console.log('⚠️  No .txt files found in knowledge-base folder');

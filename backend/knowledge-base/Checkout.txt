@@ -5,7 +5,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Approved
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction approved, payment successful, authorization granted, charge accepted, funds transferred, transaction complete
 
 SOURCE: Checkout.com
 CODE: 20xxx
@@ -14,7 +14,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Soft declines
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: soft decline, temporary rejection, retry recommended, issuer requested verification, temporary block, recoverable decline
 
 SOURCE: Checkout.com
 CODE: 30xxx
@@ -23,7 +23,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Hard declines
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: hard decline, permanent rejection, transaction cannot proceed, issuer refused, no retry possible, final decline
 
 SOURCE: Checkout.com
 CODE: 4xxxx
@@ -32,7 +32,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Risk responses
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: risk detected, fraud screening triggered, suspicious transaction, risk assessment failed, velocity check failed, anomaly detected
 
 SOURCE: Checkout.com
 CODE: 50xxx
@@ -41,7 +41,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Payout and Refund declines
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: payout failed, refund declined, settlement error, disbursement rejected, fund transfer blocked, payout unavailable
 
 SOURCE: Checkout.com
 CODE: 10000
@@ -50,7 +50,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Approved
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction approved, payment accepted, authorization successful, charge completed, funds received, approval granted
 
 SOURCE: Checkout.com
 CODE: 10008
@@ -59,7 +59,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Approved - Honor with ID (Debit Cards)
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: approved with id verification, debit card approved, id required approval, verified approval, approved with authentication, honor with identification
 
 SOURCE: Checkout.com
 CODE: 10010
@@ -68,7 +68,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Partial Value Approved
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: partial amount approved, partial value accepted, amount partially authorized, reduced approval, partial authorization, approved for lower amount
 
 SOURCE: Checkout.com
 CODE: 10011
@@ -77,7 +77,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Approved – VIP (not used)
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: vip transaction approved, premium customer approved, vip status granted, special approval, priority approval, vip privilege active
 
 SOURCE: Checkout.com
 CODE: 10076
@@ -86,7 +86,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Approved (Country Club)
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: country club approved, club member transaction approved, exclusive venue approval, membership transaction accepted, club approval granted, country club merchant approval
 
 SOURCE: Checkout.com
 CODE: 10077
@@ -95,7 +95,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Approved (Local Banks)
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: local bank approved, local institution approval, domestic bank authorization, regional bank approved, local payment accepted, local banking approval
 
 SOURCE: Checkout.com
 CODE: 10081
@@ -104,7 +104,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Approved (Approved Commercial)
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: commercial transaction approved, b2b payment approved, business payment accepted, commercial card approved, corporate transaction approval, commercial authorization granted
 
 SOURCE: Checkout.com
 CODE: 10100
@@ -113,7 +113,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Flagged as a potentially risky transaction
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: high risk transaction, potential fraud detected, risk flag applied, suspicious activity flagged, requires review, risky transaction detected
 
 SOURCE: Checkout.com
 CODE: 10200
@@ -122,7 +122,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Deferred capture
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: capture deferred, authorization pending capture, hold for later capture, delayed settlement, capture on hold, authorization not yet settled
 
 SOURCE: Checkout.com
 CODE: 20001
@@ -131,7 +131,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Refer to card issuer
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: contact card issuer, call issuer for approval, issuer contact required, refer to bank, issuer authorization needed, speak with card issuer
 
 SOURCE: Checkout.com
 CODE: 20002
@@ -140,7 +140,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Refer to card issuer - Special conditions
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: issuer special conditions apply, conditional approval needed, issuer restrictions apply, special authorization required, issuer has conditions, contact issuer for special approval
 
 SOURCE: Checkout.com
 CODE: 20003
@@ -149,7 +149,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid merchant, merchant not recognized, bad merchant code, merchant mismatch, merchant validation failed, unrecognized merchant
 
 SOURCE: Checkout.com
 CODE: 20004
@@ -158,7 +158,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Card should be captured
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: card should be retained, hold card, pick up card, card confiscation required, retain card immediately, card pickup required
 
 SOURCE: Checkout.com
 CODE: 20005
@@ -167,7 +167,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Declined - Do not honour
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: issuer declined, do not honor, bank refused, transaction rejected by issuer, issuer declined charge, honor not granted
 
 SOURCE: Checkout.com
 CODE: 20006
@@ -176,7 +176,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid parameters, malformed request, incorrect request format, bad request data, invalid data submitted, request validation failed
 
 SOURCE: Checkout.com
 CODE: 20009
@@ -185,7 +185,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Request in progress
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: request still processing, transaction in progress, waiting for completion, pending response, request not yet finished, still being processed
 
 SOURCE: Checkout.com
 CODE: 20012
@@ -194,7 +194,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid transaction, transaction not valid, malformed request, incorrect transaction, transaction rejected, bad transaction format
 
 SOURCE: Checkout.com
 CODE: 20013
@@ -203,7 +203,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid amount, incorrect value, wrong transaction amount, amount not valid, improper value, bad amount
 
 SOURCE: Checkout.com
 CODE: 20014
@@ -212,7 +212,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: account does not exist, no such account, invalid account number, account not found, nonexistent account, account number invalid
 
 SOURCE: Checkout.com
 CODE: 20015
@@ -221,7 +221,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Transaction cannot be processed through debit network
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: debit network not supported, cannot process as debit, debit transaction not allowed, incompatible with debit network, debit processing unavailable, debit method not accepted
 
 SOURCE: Checkout.com
 CODE: 20016
@@ -230,7 +230,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Card not initialised
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: card not activated, card not set up, card initialization required, card not ready, card setup incomplete, card not provisioned
 
 SOURCE: Checkout.com
 CODE: 20017
@@ -239,7 +239,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Customer cancellation
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: customer requested cancellation, customer canceled transaction, cardholder canceled, customer initiated cancellation, transaction canceled by customer, customer withdrawal
 
 SOURCE: Checkout.com
 CODE: 20018
@@ -248,7 +248,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Customer dispute
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: customer dispute filed, transaction disputed, chargeback requested, customer challenged transaction, dispute initiated, transaction under dispute
 
 SOURCE: Checkout.com
 CODE: 20019
@@ -257,7 +257,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Re-enter transaction
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: retry transaction, resubmit transaction, attempt transaction again, transaction requires reentry, please retry, retry required
 
 SOURCE: Checkout.com
 CODE: 20020
@@ -266,7 +266,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid response received, bad response format, response not valid, malformed response, response error, incorrect response
 
 SOURCE: Checkout.com
 CODE: 20021
@@ -275,7 +275,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: No action taken (unable to back out prior transaction)
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: unable to reverse transaction, cannot back out transaction, reversal not possible, prior transaction cannot be undone, no rollback available, reversal failed
 
 SOURCE: Checkout.com
 CODE: 20022
@@ -284,7 +284,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Suspected malfunction
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: system malfunction suspected, possible system error, malfunction detected, system problem, suspected technical issue, system not functioning properly
 
 SOURCE: Checkout.com
 CODE: 20023
@@ -293,7 +293,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Unacceptable transaction fee
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction fee not acceptable, unacceptable fee, fee rejected, fee too high, excessive transaction fee, fee not approved
 
 SOURCE: Checkout.com
 CODE: 20024
@@ -302,7 +302,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: File update not supported by the receiver
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: receiver does not support file update, file update not supported, unsupported file update, receiver cannot process update, update format not accepted, file update incompatible
 
 SOURCE: Checkout.com
 CODE: 20025
@@ -311,7 +311,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Unable to locate record on file
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: record not found, unable to locate record, record does not exist, no matching record, record lookup failed, record unavailable
 
 SOURCE: Checkout.com
 CODE: 20026
@@ -320,7 +320,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Duplicate file update record
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: duplicate file update record, duplicate update detected, duplicate record submitted, record already updated, duplicate entry, record update already exists
 
 SOURCE: Checkout.com
 CODE: 20027
@@ -329,7 +329,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: File update field edit error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: file field edit error, field validation error, field format error, field edit failed, invalid field data, field update error
 
 SOURCE: Checkout.com
 CODE: 20028
@@ -338,7 +338,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: File is temporarily unavailable
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: file temporarily unavailable, system temporarily down, file access temporarily blocked, resource unavailable, temporary system outage, file access denied temporarily
 
 SOURCE: Checkout.com
 CODE: 20029
@@ -347,7 +347,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: File update not successful
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: file update failed, update not successful, record update unsuccessful, file change failed, update rejected, file modification failed
 
 SOURCE: Checkout.com
 CODE: 20030
@@ -356,7 +356,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Format error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: format error, invalid format, malformed data, formatting incorrect, bad data format, format not valid
 
 SOURCE: Checkout.com
 CODE: 20031
@@ -365,7 +365,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Bank not supported by Switch
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: bank not supported, unsupported financial institution, switch network not available, bank not in network, issuer not supported by switch, bank cannot process
 
 SOURCE: Checkout.com
 CODE: 20032
@@ -374,7 +374,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Completed partially
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: partial transaction, incomplete payment, partially completed, split authorization, partial approval, transaction partially processed
 
 SOURCE: Checkout.com
 CODE: 20033
@@ -383,7 +383,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid transaction reference, bad previous transaction ID, scheme transaction ID not found, invalid prior transaction, transaction ID mismatch, previous reference invalid
 
 SOURCE: Checkout.com
 CODE: 20038
@@ -392,7 +392,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Allowable PIN tries exceeded
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: PIN attempts exceeded, too many PIN tries, PIN entry blocked, maximum PIN retries reached, card locked due to PIN, PIN verification limit exceeded
 
 SOURCE: Checkout.com
 CODE: 20039
@@ -401,7 +401,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: No credit account
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: no credit facility, credit account not found, account not credit type, cardholder has no credit, credit line unavailable, account lacks credit
 
 SOURCE: Checkout.com
 CODE: 20040
@@ -410,7 +410,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Requested function not supported
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: function not supported, unsupported transaction type, feature not available, operation not permitted, card does not support function, capability not enabled
 
 SOURCE: Checkout.com
 CODE: 20042
@@ -419,7 +419,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: No universal value/amount
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: no amount specified, missing transaction amount, amount not provided, universal value not set, undefined payment amount, amount field invalid
 
 SOURCE: Checkout.com
 CODE: 20044
@@ -428,7 +428,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: No investment account
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: no investment account, investment account not found, account not investment type, cardholder has no investment account, investment facility unavailable, account lacks investment
 
 SOURCE: Checkout.com
 CODE: 20045
@@ -437,7 +437,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: The Issuer does not support fallback transactions of hybrid-card
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: hybrid card fallback not supported, issuer rejects fallback, fallback transaction declined, hybrid card cannot fallback, issuer does not support fallback, no fallback available for hybrid
 
 SOURCE: Checkout.com
 CODE: 20046
@@ -446,7 +446,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Bank decline
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: bank declined, issuer declined, bank refused transaction, issuer rejected, do not honor, bank declined payment
 
 SOURCE: Checkout.com
 CODE: 20051
@@ -455,7 +455,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Customer account does not have enough funds available
 FIX: Retry the transaction after customer adds funds to their account, or request an alternative payment method.
-SYNONYMS: not enough money, low balance, no funds, account empty, balance too low, insufficient balance
+SYNONYMS: insufficient funds, not enough money, low balance, account empty, no funds available, inadequate funds
 
 SOURCE: Checkout.com
 CODE: 20052
@@ -464,7 +464,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: No current (checking) account
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: no checking account, current account not found, account not checking type, cardholder has no checking account, checking facility unavailable, account lacks current
 
 SOURCE: Checkout.com
 CODE: 20053
@@ -473,7 +473,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: No savings account
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: no savings account, savings account not found, account not savings type, cardholder has no savings account, savings facility unavailable, account lacks savings
 
 SOURCE: Checkout.com
 CODE: 20054
@@ -482,7 +482,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Card has passed its expiration date
 FIX: Request updated card information with a valid expiration date from the customer.
-SYNONYMS: out of date, no longer valid, past expiration, card expired, date passed
+SYNONYMS: card expired, expired card, past expiration date, card out of date, expiration date passed, no longer valid
 
 SOURCE: Checkout.com
 CODE: 20055
@@ -491,7 +491,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Incorrect PIN
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: incorrect PIN, wrong PIN, invalid PIN, PIN mismatch, bad PIN entered, PIN verification failed
 
 SOURCE: Checkout.com
 CODE: 20056
@@ -500,7 +500,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: No card record
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: card not found, no card record, card record not located, card does not exist, card not on file, card unknown
 
 SOURCE: Checkout.com
 CODE: 20057
@@ -509,7 +509,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Transaction not permitted to cardholder
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction not permitted to cardholder, cardholder restricted, transaction restricted for card, not allowed for cardholder, cardholder blocked, transaction not authorized for card
 
 SOURCE: Checkout.com
 CODE: 20058
@@ -518,7 +518,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Transaction not permitted to terminal
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction not permitted at terminal, terminal not allowed, merchant not allowed, terminal not supported, transaction blocked at terminal, terminal restriction applied
 
 SOURCE: Checkout.com
 CODE: 20059
@@ -527,7 +527,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Transaction flagged as potentially fraudulent
 FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
-SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+SYNONYMS: suspected fraud, fraud detected, fraudulent activity, fraud suspected, potential fraud, suspicious transaction
 
 SOURCE: Checkout.com
 CODE: 20060
@@ -536,7 +536,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Card acceptor contact acquirer
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: contact acquirer, reach out to acquirer, acquirer contact required, acquirer intervention needed, contact acquiring bank, escalation to acquirer needed
 
 SOURCE: Checkout.com
 CODE: 20061
@@ -545,7 +545,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: transaction amount exceeds limit, activity limit exceeded, amount over daily limit, spending limit reached, transaction too large, daily withdrawal limit exceeded
 
 SOURCE: Checkout.com
 CODE: 20062
@@ -554,7 +554,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Card or transaction type is restricted by the issuer
 FIX: Customer must contact their bank to resolve the issue. Request a different payment method.
-SYNONYMS: not allowed, blocked, prohibited, restricted transaction, not permitted
+SYNONYMS: card restricted, restricted card usage, card not allowed, card has restrictions, blocked card type, card restriction in place
 
 SOURCE: Checkout.com
 CODE: 20063
@@ -563,7 +563,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Security violation
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: security violation detected, suspicious security issue, security check failed, potential security breach, unauthorized security flag, security alert triggered
 
 SOURCE: Checkout.com
 CODE: 20064
@@ -572,7 +572,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Original value incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: incorrect original amount, original value mismatch, wrong original transaction value, original amount does not match, transaction amount altered, inconsistent original value
 
 SOURCE: Checkout.com
 CODE: 20065
@@ -581,7 +581,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: withdrawal frequency limit exceeded, too many withdrawals, withdrawal limit reached, exceeds withdrawal frequency, maximum withdrawals exceeded, withdrawal frequency restriction
 
 SOURCE: Checkout.com
 CODE: 20066
@@ -590,7 +590,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Card acceptor call acquirer security
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: card acceptor must call acquirer, contact acquirer required, security protocol requires call, acquirer contact needed, issuer contact required, call acquirer for approval
 
 SOURCE: Checkout.com
 CODE: 20067
@@ -599,7 +599,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Hard capture - Pick up card at ATM
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: pick up card at ATM, card confiscated at ATM, ATM card capture, hard capture hold card, retain card at ATM, card retained for pickup
 
 SOURCE: Checkout.com
 CODE: 20068
@@ -608,7 +608,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Response received too late / Timeout
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: response timeout, timeout error, response received too late, network timeout, transaction timeout, delayed response
 
 SOURCE: Checkout.com
 CODE: 20072
@@ -617,7 +617,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account not yet activated
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account not activated, new account not ready, card not yet active, account activation required, account pending activation, inactive account
 
 SOURCE: Checkout.com
 CODE: 20075
@@ -626,7 +626,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Allowable PIN-entry tries exceeded
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: PIN attempts exceeded, too many PIN tries, PIN entry limit reached, incorrect PIN too many times, PIN locked out, maximum PIN attempts failed
 
 SOURCE: Checkout.com
 CODE: 20078
@@ -635,7 +635,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Blocked at first use - transaction from new or replacement card that is not properly unblocked
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: new card not unblocked, card not properly activated, replacement card blocked, first use blocked, card activation required, new card unblock needed
 
 SOURCE: Checkout.com
 CODE: 20081
@@ -644,7 +644,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Card is local use only
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: card local use only, domestic use only, restricted to local transactions, international use blocked, regional restriction, card cannot be used internationally
 
 SOURCE: Checkout.com
 CODE: 20082
@@ -653,7 +653,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: No security model
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: no security model defined, security model missing, authentication method not set, security configuration absent, security framework not configured, security model not found
 
 SOURCE: Checkout.com
 CODE: 20083
@@ -662,7 +662,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: No accounts
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: no accounts linked, account missing, no associated accounts, account not found, no valid account, account does not exist
 
 SOURCE: Checkout.com
 CODE: 20084
@@ -671,7 +671,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: No PBF
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: no PBF configured, PBF not set up, personal financial data missing, profile not configured, PBF absent, personal banking file not found
 
 SOURCE: Checkout.com
 CODE: 20085
@@ -680,7 +680,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: PBF update error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: PBF update failed, profile update error, personal financial data update error, configuration update failed, PBF sync error, profile synchronization failed
 
 SOURCE: Checkout.com
 CODE: 20086
@@ -689,7 +689,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: ATM malfunction
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: ATM malfunction, ATM out of service, ATM technical error, ATM not working, machine malfunction, ATM hardware failure
 
 SOURCE: Checkout.com
 CODE: 20087
@@ -698,7 +698,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Verify the information with the customer and retry with corrected details.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid track data, bad card data, incorrect CVV or expiry, magnetic strip error, card data corrupt, invalid card information on stripe
 
 SOURCE: Checkout.com
 CODE: 20088
@@ -707,7 +707,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Unable to dispense/process
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: unable to dispense funds, dispensing error, cash dispense failed, cannot process request, unable to complete transaction, dispensing malfunction
 
 SOURCE: Checkout.com
 CODE: 20089
@@ -716,7 +716,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Administration error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: administration error, system administration issue, administrative processing error, backend system error, administrative configuration error, operational error
 
 SOURCE: Checkout.com
 CODE: 20090
@@ -725,7 +725,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Cut-off in progress
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: cut-off in progress, system cut-off, maintenance window, processing halted, batch cutoff, end of day processing
 
 SOURCE: Checkout.com
 CODE: 20091
@@ -734,7 +734,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Issuer unavailable or switch is inoperative
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: issuer unavailable, switch down, payment network unavailable, bank system offline, issuer unreachable, connection timeout
 
 SOURCE: Checkout.com
 CODE: 20092
@@ -743,7 +743,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Destination cannot be found for routing
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: routing destination not found, invalid routing path, destination unreachable, cannot route transaction, routing failure, network path unavailable
 
 SOURCE: Checkout.com
 CODE: 20093
@@ -752,7 +752,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Transaction cannot be completed; violation of law
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: illegal transaction, regulatory violation, prohibited by law, compliance violation, transaction violates regulations, illegal activity
 
 SOURCE: Checkout.com
 CODE: 20094
@@ -761,7 +761,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Duplicate transmission / invoice
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: duplicate transaction, duplicate submission, repeated transaction, duplicate invoice, duplicate transmission, duplicate request
 
 SOURCE: Checkout.com
 CODE: 20095
@@ -770,7 +770,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Reconcile error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: reconciliation error, balance mismatch, reconciliation failed, accounting discrepancy, settlement mismatch, reconcile mismatch
 
 SOURCE: Checkout.com
 CODE: 20096
@@ -779,7 +779,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: System malfunction
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: system malfunction, system error, technical failure, system unavailable, internal system error, processing malfunction
 
 SOURCE: Checkout.com
 CODE: 20097
@@ -788,7 +788,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Reconciliation totals reset
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: reconciliation totals reset, batch totals reset, settlement reset, reconciliation restart, totals cleared, record reset
 
 SOURCE: Checkout.com
 CODE: 20098
@@ -797,7 +797,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: MAC error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: MAC error, authentication failure, message authentication code invalid, security code failure, checksum error, authentication code mismatch
 
 SOURCE: Checkout.com
 CODE: 20099
@@ -806,7 +806,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Other / Unidentified responses
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: unidentified response, unknown error, other response, unspecified error, unclassified response, miscellaneous error
 
 SOURCE: Checkout.com
 CODE: 20197
@@ -815,7 +815,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: The ATM/POS terminal number has not been registered
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: terminal not registered, unregistered ATM, POS terminal unregistered, device not registered, terminal ID unknown, terminal registration missing
 
 SOURCE: Checkout.com
 CODE: 2005C
@@ -824,7 +824,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Transaction not supported / blocked by issuer
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction not supported, unsupported transaction type, blocked by issuer, issuer does not support, transaction blocked, issuer restriction
 
 SOURCE: Checkout.com
 CODE: 2006P
@@ -833,7 +833,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Cardholder ID verification failed
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: ID verification failed, cardholder verification failed, identity verification failed, ID check failed, authentication failed, verification unsuccessful
 
 SOURCE: Checkout.com
 CODE: 2009G
@@ -842,7 +842,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Blocked by cardholder / contact cardholder
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: blocked by cardholder, cardholder blocked transaction, customer blocked, contact cardholder, cardholder declined, cardholder requested block
 
 SOURCE: Checkout.com
 CODE: 200A4
@@ -851,7 +851,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Transaction with defect, contact issuer
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: defective transaction, contact issuer, transaction with defect, issuer contact required, defective request, malformed transaction
 
 SOURCE: Checkout.com
 CODE: 200A5
@@ -860,7 +860,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: The original transactions are rejected.
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: original transaction rejected, reversal failed, original request rejected, prior transaction rejected, reversal rejected, previous transaction denied
 
 SOURCE: Checkout.com
 CODE: 200A6
@@ -869,7 +869,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: UnionPay forwarded the original request, but did not receive a response from the issuer.
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: no response from issuer, issuer timeout, issuer response missing, issuer did not respond, request forwarded no reply, issuer unresponsive
 
 SOURCE: Checkout.com
 CODE: 200E0
@@ -878,7 +878,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Unauthorised access
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: unauthorized access, access denied, authentication failed, invalid credentials, permission denied, unauthorized user
 
 SOURCE: Checkout.com
 CODE: 200E2
@@ -887,7 +887,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Signature verification failure
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: signature verification failure, signature invalid, signature mismatch, signature check failed, digital signature failed, signature authentication failed
 
 SOURCE: Checkout.com
 CODE: 200E3
@@ -896,7 +896,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: System busy. Try again later.
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: system busy, retry later, try again later, system overloaded, high load, temporary unavailable
 
 SOURCE: Checkout.com
 CODE: 200N0
@@ -905,7 +905,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Force STIP
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: force authentication required, strong customer authentication needed, SCA mandate, additional verification required, cardholder verification required, authentication challenge
 
 SOURCE: Checkout.com
 CODE: 200N7
@@ -914,7 +914,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: CVV/security code does not match
 FIX: Verify the information with the customer and retry with corrected details.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: CVV mismatch, security code invalid, incorrect CVV, CVV verification failed, card security code mismatch, CVV does not match
 
 SOURCE: Checkout.com
 CODE: 200O5
@@ -923,7 +923,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: PIN required
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: PIN entry required, personal identification number required, debit PIN needed, cardholder PIN required, PIN verification needed, enter PIN
 
 SOURCE: Checkout.com
 CODE: 200P1
@@ -932,7 +932,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: daily limit exceeded, over daily transaction limit, daily spending limit reached, daily cap exceeded, exceeds daily limit, maximum daily amount surpassed
 
 SOURCE: Checkout.com
 CODE: 200P9
@@ -941,7 +941,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: transaction amount exceeds limit, amount over limit, exceeds transaction limit, amount too high, maximum transaction amount exceeded, reduce transaction amount
 
 SOURCE: Checkout.com
 CODE: 200R1
@@ -952,7 +952,7 @@ RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Issuer initiated a stop payment (revocation order) for this
 authorization
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: payment stopped by issuer, issuer revoked authorization, stop payment issued, transaction revocation requested, issuer halt, authorization cancelled by bank
 
 SOURCE: Checkout.com
 CODE: 200R3
@@ -963,7 +963,7 @@ RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Issuer initiated a stop payment (revocation order) for all
 authorizations
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: all payments stopped by issuer, bulk authorization revocation, issuer revoked all authorizations, blanket stop payment, full account halt by issuer, issuer cancelled all transactions
 
 SOURCE: Checkout.com
 CODE: 200S4
@@ -972,7 +972,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: PTLF full
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: positive list full, PTLF capacity exceeded, positive list database full, whitelist storage exceeded, approved list at capacity, positive list limit reached
 
 SOURCE: Checkout.com
 CODE: 200T2
@@ -981,7 +981,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid transaction date, transaction date incorrect, wrong transaction date, transaction date not allowed, unsupported transaction date, date format rejected
 
 SOURCE: Checkout.com
 CODE: 200T3
@@ -990,7 +990,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Card not supported
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: card type not supported, payment method not accepted, card brand not supported, unsupported card type, card not accepted, payment card not eligible
 
 SOURCE: Checkout.com
 CODE: 200T5
@@ -999,7 +999,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: CAF status = 0 or 9
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: cardholder account frozen, account status inactive, CAF status blocked, cardholder account flagged, account suspended status, cardholder inactive
 
 SOURCE: Checkout.com
 CODE: 20100
@@ -1008,7 +1008,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: expiry date format incorrect, card expiration format invalid, wrong expiry date format, expiry date malformed, expiration date formatting error, invalid date format
 
 SOURCE: Checkout.com
 CODE: 20101
@@ -1017,7 +1017,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: token invalid, invalid payment token, token not found, token expired or incorrect, account not found for token, customer record not found
 
 SOURCE: Checkout.com
 CODE: 20102
@@ -1026,7 +1026,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: merchant ID invalid, wallet ID incorrect, invalid merchant configuration, merchant not found, wrong merchant account, merchant wallet mismatch
 
 SOURCE: Checkout.com
 CODE: 20103
@@ -1035,7 +1035,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Card type / payment method not supported
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: payment method not supported, card type not accepted, payment option unavailable, unsupported payment method, card brand rejected, payment type not allowed
 
 SOURCE: Checkout.com
 CODE: 20104
@@ -1044,7 +1044,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid transaction structure, malformed transaction, transaction format error, invalid transaction data, transaction validation failed, bad transaction structure
 
 SOURCE: Checkout.com
 CODE: 20105
@@ -1053,7 +1053,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Gateway reject - Violation
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction violates rules, policy violation detected, transaction violates compliance, restricted transaction type, violation of payment rules, prohibited transaction pattern
 
 SOURCE: Checkout.com
 CODE: 20106
@@ -1062,7 +1062,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Unsupported currency
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: currency not supported, unsupported currency code, currency not accepted, currency not available, transaction currency rejected, currency mismatch
 
 SOURCE: Checkout.com
 CODE: 20107
@@ -1071,7 +1071,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Billing address is missing
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: billing address required, address missing, address not provided, billing information incomplete, address verification required, address details missing
 
 SOURCE: Checkout.com
 CODE: 20108
@@ -1080,7 +1080,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Declined - Updated cardholder available
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: updated card available, new card on file, cardholder updated payment method, replacement card available, newer card exists, updated payment instrument available
 
 SOURCE: Checkout.com
 CODE: 20109
@@ -1089,7 +1089,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Transaction already reversed (voided)
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction already voided, reversal already processed, transaction previously reversed, void already applied, duplicate reversal request, reversal already completed
 
 SOURCE: Checkout.com
 CODE: 20110
@@ -1098,7 +1098,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Authorization completed
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: authorization successful, authorization approved, auth completed, authorization granted, authorization confirmed, auth success
 
 SOURCE: Checkout.com
 CODE: 20111
@@ -1107,7 +1107,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Transaction already reversed
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction reversed, reversal processed, transaction voided, refund applied, transaction cancelled, reversal completed
 
 SOURCE: Checkout.com
 CODE: 20112
@@ -1116,7 +1116,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Merchant not Mastercard SecureCode enabled
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: merchant not 3D Secure enabled, SecureCode not supported, merchant SecureCode disabled, not enrolled in SecureCode, SecureCode unavailable, merchant not authenticated
 
 SOURCE: Checkout.com
 CODE: 20113
@@ -1125,7 +1125,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid property, incorrect property, bad property value, invalid field, wrong property, property not recognized
 
 SOURCE: Checkout.com
 CODE: 20114
@@ -1134,7 +1134,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Token is incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: token invalid, incorrect token, bad token, token not valid, token mismatch, wrong token
 
 SOURCE: Checkout.com
 CODE: 20115
@@ -1143,7 +1143,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid lifetime, missing lifetime, lifetime expired, invalid expiration, lifetime not specified, bad lifetime value
 
 SOURCE: Checkout.com
 CODE: 20116
@@ -1152,7 +1152,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid encoding, bad encoding, encoding not supported, unsupported encoding format, encoding error, incorrect encoding
 
 SOURCE: Checkout.com
 CODE: 20117
@@ -1161,7 +1161,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid API version, unsupported API version, API version not supported, wrong API version, outdated API version, incompatible API version
 
 SOURCE: Checkout.com
 CODE: 20118
@@ -1170,7 +1170,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Transaction pending
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction pending, pending approval, awaiting authorization, transaction not settled, processing in progress, transaction queued
 
 SOURCE: Checkout.com
 CODE: 20119
@@ -1179,7 +1179,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid batch data, missing batch data, batch incomplete, batch malformed, bad batch format, batch data invalid or missing
 
 SOURCE: Checkout.com
 CODE: 20120
@@ -1188,7 +1188,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid customer, unknown customer, customer not found, bad customer, invalid user, customer not recognized
 
 SOURCE: Checkout.com
 CODE: 20121
@@ -1197,7 +1197,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: merchant transaction limit exceeded, terminal limit exceeded, exceeds merchant limit, transaction limit reached, over merchant limit, maximum merchant transactions exceeded
 
 SOURCE: Checkout.com
 CODE: 20122
@@ -1206,7 +1206,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Mastercard installments not supported
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: installments not supported, Mastercard installments unavailable, installment plan not allowed, payment plan not supported, installment payment declined, installments disabled
 
 SOURCE: Checkout.com
 CODE: 20123
@@ -1215,7 +1215,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Missing basic data: zip, addr, member
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: missing address, missing zip code, missing member data, required fields missing, incomplete address data, zip code required
 
 SOURCE: Checkout.com
 CODE: 20124
@@ -1224,7 +1224,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: CVV/security code does not match
 FIX: Verify the information with the customer and retry with corrected details.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: missing CVV, CVV required, no security code, CVV not provided, CVC missing, card verification code required
 
 SOURCE: Checkout.com
 CODE: 20150
@@ -1233,7 +1233,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Card not 3D Secure (3DS) enabled
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: card not 3D Secure enabled, 3DS not supported, 3DS not enrolled, card not authenticated, 3DS unavailable, not 3DS capable
 
 SOURCE: Checkout.com
 CODE: 20151
@@ -1242,7 +1242,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Cardholder failed 3DS authentication
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: 3DS authentication failed, cardholder authentication failed, 3DS verification failed, authentication unsuccessful, 3DS challenge failed, cardholder not verified
 
 SOURCE: Checkout.com
 CODE: 20152
@@ -1251,7 +1251,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Initial 3DS transaction not completed within 15 minutes
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: 3DS timeout, 3DS session expired, 3DS authentication timeout, initial 3DS not completed, 3DS verification timeout, 3DS window expired
 
 SOURCE: Checkout.com
 CODE: 20153
@@ -1260,7 +1260,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: 3DS system malfunction
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: 3DS system error, 3DS service unavailable, 3DS malfunction, 3DS server error, 3DS system down, 3D Secure processing error
 
 SOURCE: Checkout.com
 CODE: 20154
@@ -1269,7 +1269,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: 3DS authentication required
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: 3DS challenge required, strong customer authentication needed, three-domain secure verification required, additional authentication required, 3D Secure step-up needed, multi-factor authentication required
 
 SOURCE: Checkout.com
 CODE: 20155
@@ -1278,7 +1278,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: 3DS authentication failed, authentication service error, invalid authentication response, 3D Secure validation failed, authentication result rejected, verification service malfunction
 
 SOURCE: Checkout.com
 CODE: 20156
@@ -1287,7 +1287,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Requested function not supported by the acquirer
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: acquirer does not support this function, unsupported by payment processor, feature not available at acquirer, transaction type not supported, acquirer capability missing, processor limitation
 
 SOURCE: Checkout.com
 CODE: 20157
@@ -1296,7 +1296,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: merchant account misconfigured, invalid merchant setup, merchant configuration error, contact merchant support, merchant account settings invalid, merchant profile incomplete
 
 SOURCE: Checkout.com
 CODE: 20158
@@ -1305,7 +1305,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Card has passed its expiration date
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: out of date, no longer valid, past expiration, card expired, date passed
+SYNONYMS: refund window expired, refund deadline passed, refund period closed, too late to refund, refund eligibility expired, refund time limit exceeded
 
 SOURCE: Checkout.com
 CODE: 20159
@@ -1314,7 +1314,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: ACS Malfunction
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: authentication server error, ACS system down, authentication service unavailable, issuer system malfunction, 3DS server error, authentication gateway failure
 
 SOURCE: Checkout.com
 CODE: 20179
@@ -1323,7 +1323,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Lifecycle
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction lifecycle error, card lifecycle issue, account lifecycle violation, transaction stage error, card status lifecycle problem, account state mismatch
 
 SOURCE: Checkout.com
 CODE: 20182
@@ -1332,7 +1332,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Policy
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: policy violation, transaction policy breach, payment policy rejected, policy restriction applied, policy rule violated, compliance policy failed
 
 SOURCE: Checkout.com
 CODE: 20183
@@ -1341,7 +1341,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Security
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: security policy violation, security check failed, security restriction applied, suspicious security flag, security rule breached, security control triggered
 
 SOURCE: Checkout.com
 CODE: 20193
@@ -1350,7 +1350,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid country code, unsupported country, country code incorrect, unknown country, country not recognized, invalid geographic code
 
 SOURCE: Checkout.com
 CODE: 30004
@@ -1359,7 +1359,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Transaction flagged as potentially fraudulent
 FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
-SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+SYNONYMS: card pickup required, retain card, confiscate card for security, hold card at terminal, card confiscation, card retain instruction
 
 SOURCE: Checkout.com
 CODE: 30007
@@ -1368,7 +1368,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Pick up card - Special conditions
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: card pickup special conditions, hold card special circumstances, card retain with conditions, conditional card confiscation, card pickup - issuer discretion, special pickup instructions
 
 SOURCE: Checkout.com
 CODE: 30015
@@ -1377,7 +1377,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Issuing bank declined the transaction with reason: No such issuer
 FIX: Contact the issuing bank for clarification, or request a different payment method from the customer.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: bank not found, issuer unknown, invalid bank code, institution does not exist, routing number invalid, bank identification failed
 
 SOURCE: Checkout.com
 CODE: 30016
@@ -1386,7 +1386,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Issuer does not allow online gambling payout
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: gambling payouts not allowed, issuer blocks gambling, online gambling prohibited, gambling transactions restricted, gaming payout rejected, issuer gambling restriction
 
 SOURCE: Checkout.com
 CODE: 30017
@@ -1395,7 +1395,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Issuer does not allow original credit transaction
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: original credit transaction not allowed, OCT not supported, issuer blocks credits, credit transfers prohibited, original credit restriction, issuer does not allow refunds
 
 SOURCE: Checkout.com
 CODE: 30018
@@ -1404,7 +1404,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Issuer does not allow money transfer payout
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: money transfer payouts prohibited, fund transfers not allowed, issuer blocks money transfers, money movement restricted, transfer transaction denied, issuer transfer restriction
 
 SOURCE: Checkout.com
 CODE: 30019
@@ -1413,7 +1413,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Issuer does not allow non-money transfer payout
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: non-money transfer payouts blocked, issuer blocks non-transfer credits, payout type not allowed, credit transaction restricted, non-transfer payout prohibited, issuer payout restriction
 
 SOURCE: Checkout.com
 CODE: 30020
@@ -1422,7 +1422,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: transaction amount invalid, incorrect amount, amount not valid, malformed amount, amount format error, invalid transaction sum
 
 SOURCE: Checkout.com
 CODE: 30021
@@ -1431,7 +1431,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: daily limit exceeded, amount limit reached, cumulative limit breached, total spending limit hit, maximum amount exceeded, balance limit violation
 
 SOURCE: Checkout.com
 CODE: 30022
@@ -1440,7 +1440,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: transaction count limit exceeded, too many transactions, transaction frequency limit reached, transaction count maximum hit, transaction quota exceeded, transaction count restriction violated
 
 SOURCE: Checkout.com
 CODE: 30033
@@ -1449,7 +1449,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Card has passed its expiration date
 FIX: Request updated card information with a valid expiration date from the customer.
-SYNONYMS: out of date, no longer valid, past expiration, card expired, date passed
+SYNONYMS: expired card, card past expiration, out of date card, card no longer valid, hold card, retain card
 
 SOURCE: Checkout.com
 CODE: 30034
@@ -1458,7 +1458,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Transaction flagged as potentially fraudulent
 FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
-SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+SYNONYMS: suspected fraud, fraudulent activity detected, potential fraud, hold card, retain card, card pickup required
 
 SOURCE: Checkout.com
 CODE: 30035
@@ -1467,7 +1467,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Contact acquirer - Pick up
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: contact acquiring bank, acquirer intervention needed, issuer contact required, hold card, retain card, card pickup required
 
 SOURCE: Checkout.com
 CODE: 30036
@@ -1476,7 +1476,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Card or transaction type is restricted by the issuer
 FIX: Customer must contact their bank to resolve the issue. Request a different payment method.
-SYNONYMS: not allowed, blocked, prohibited, restricted transaction, not permitted
+SYNONYMS: restricted card, card not allowed, prohibited card, transaction blocked, hold card, retain card
 
 SOURCE: Checkout.com
 CODE: 30037
@@ -1485,7 +1485,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Call acquirer security - Pick up
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: call acquirer security, security verification needed, fraud check required, hold card, retain card, card pickup required
 
 SOURCE: Checkout.com
 CODE: 30038
@@ -1494,7 +1494,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Allowable PIN tries exceeded - Pick up
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: PIN attempts exceeded, too many PIN tries, incorrect PIN multiple times, card locked, hold card, retain card
 
 SOURCE: Checkout.com
 CODE: 30041
@@ -1503,7 +1503,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Card has been reported lost by the cardholder
 FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
-SYNONYMS: reported lost, missing card, lost card, cardholder reported lost
+SYNONYMS: lost card reported, missing card, cardholder reported lost, hold card, retain card, card pickup required
 
 SOURCE: Checkout.com
 CODE: 30043
@@ -1512,7 +1512,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Card has been reported stolen by the cardholder
 FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
-SYNONYMS: reported stolen, fraudulent card, stolen card, theft reported
+SYNONYMS: stolen card reported, theft reported, fraudulent card, hold card, retain card, card pickup required
 
 SOURCE: Checkout.com
 CODE: 30044
@@ -1521,7 +1521,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Transaction rejected - AMLD5
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: AMLD5 compliance rejection, anti-money laundering violation, regulatory block, transaction declined, payment rejected, restricted jurisdiction
 
 SOURCE: Checkout.com
 CODE: 30045
@@ -1530,7 +1530,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid payout type, unsupported transfer method, wrong fund transfer type, incorrect payout method, bad transfer type, invalid disbursement
 
 SOURCE: Checkout.com
 CODE: 30046
@@ -1539,7 +1539,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Closed account
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: closed account, account inactive, account terminated, account no longer valid, account unavailable, account deactivated
 
 SOURCE: Checkout.com
 CODE: 30401
@@ -1548,7 +1548,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Capture amount greater than allowed
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: capture amount too high, exceeds authorized amount, overcapture attempted, capture limit exceeded, amount over authorization, maximum capture exceeded
 
 SOURCE: Checkout.com
 CODE: 30402
@@ -1557,7 +1557,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Overcapture not allowed for partial capture
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: overcapture not allowed, partial capture already processed, cannot capture additional funds, excess capture blocked, additional capture rejected, capture exceeds partial amount
 
 SOURCE: Checkout.com
 CODE: 30403
@@ -1566,7 +1566,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Overcapture not allowed for partial authorization
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: overcapture blocked, partial authorization already exists, cannot exceed authorized amount, capture limit on partial auth, excess capture not permitted, additional capture forbidden
 
 SOURCE: Checkout.com
 CODE: 30404
@@ -1575,7 +1575,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Sub-merchant ID missing
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: missing sub-merchant ID, sub-merchant identifier required, sub-merchant not provided, incomplete merchant data, merchant hierarchy missing, merchant ID incomplete
 
 SOURCE: Checkout.com
 CODE: 30405
@@ -1584,7 +1584,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid order description format, bad description format, description formatting error, incorrect description structure, improper description syntax, malformed order description
 
 SOURCE: Checkout.com
 CODE: 41101
@@ -1593,7 +1593,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Risk Blocked Transaction
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: risk-based block, transaction blocked by risk engine, risk control block, fraud risk detected, high risk transaction, risk assessment failed
 
 SOURCE: Checkout.com
 CODE: 41201
@@ -1602,7 +1602,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Card number
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: decline list card number, blacklisted card number, card on decline list, blocked card number, card denied entry, restricted card number
 
 SOURCE: Checkout.com
 CODE: 41202
@@ -1611,7 +1611,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - BIN
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: decline list BIN, blacklisted BIN, blocked bank identification number, BIN on decline list, restricted BIN, BIN denied entry
 
 SOURCE: Checkout.com
 CODE: 41203
@@ -1620,7 +1620,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Email address
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: decline list email address, blacklisted email, blocked email address, email on decline list, restricted email, email denied entry
 
 SOURCE: Checkout.com
 CODE: 41204
@@ -1629,7 +1629,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Phone
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: phone number on decline list, blocked phone number, phone blacklisted, phone in blocklist, flagged phone number, phone number rejected
 
 SOURCE: Checkout.com
 CODE: 41205
@@ -1638,7 +1638,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Payment IP
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: payment IP on decline list, blocked IP address, IP blacklisted, IP in blocklist, flagged IP address, IP address rejected
 
 SOURCE: Checkout.com
 CODE: 41206
@@ -1647,7 +1647,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Email domain
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: email domain on decline list, blocked email domain, domain blacklisted, domain in blocklist, flagged email domain, email domain rejected
 
 SOURCE: Checkout.com
 CODE: 41301
@@ -1656,7 +1656,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Transaction flagged as potentially fraudulent
 FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
-SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+SYNONYMS: fraud score too high, fraud risk exceeds threshold, high fraud risk detected, fraud score over limit, fraud indicators excessive, transaction flagged as high risk
 
 SOURCE: Checkout.com
 CODE: 42101
@@ -1665,7 +1665,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Risk Blocked Transaction
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction blocked by risk rules, risk management blocked, security hold on transaction, transaction stopped for risk, risk-based block, flagged transaction blocked
 
 SOURCE: Checkout.com
 CODE: 42201
@@ -1674,7 +1674,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Card number
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: card number on decline list, card blacklisted, card in blocklist, flagged card number, card number rejected, card blocked
 
 SOURCE: Checkout.com
 CODE: 42202
@@ -1683,7 +1683,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - BIN
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: BIN on decline list, card issuer BIN blacklisted, BIN in blocklist, flagged BIN, BIN rejected, card BIN blocked
 
 SOURCE: Checkout.com
 CODE: 42203
@@ -1692,7 +1692,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Email address
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: email address on decline list, email blacklisted, email in blocklist, flagged email address, email address rejected, email blocked
 
 SOURCE: Checkout.com
 CODE: 42204
@@ -1701,7 +1701,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Phone
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: phone number on decline list, blocked phone number, phone blacklisted, phone in blocklist, flagged phone number, phone number rejected
 
 SOURCE: Checkout.com
 CODE: 42205
@@ -1710,7 +1710,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Payment IP
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: payment IP on decline list, blocked IP address, IP blacklisted, IP in blocklist, flagged IP address, IP address rejected
 
 SOURCE: Checkout.com
 CODE: 42206
@@ -1719,7 +1719,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Email domain
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: email domain on decline list, blocked email domain, domain blacklisted, domain in blocklist, flagged email domain, email domain rejected
 
 SOURCE: Checkout.com
 CODE: 42301
@@ -1728,7 +1728,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Transaction flagged as potentially fraudulent
 FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
-SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+SYNONYMS: fraud score too high, fraud risk exceeds threshold, high fraud risk detected, fraud score over limit, fraud indicators excessive, transaction flagged as high risk
 
 SOURCE: Checkout.com
 CODE: 43101
@@ -1737,7 +1737,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Transaction flagged as potentially fraudulent
 FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
-SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+SYNONYMS: potential fraud detected, fraud risk identified, suspicious transaction, fraud suspected, transaction under fraud review, fraud warning
 
 SOURCE: Checkout.com
 CODE: 43102
@@ -1746,7 +1746,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Risk blocked transaction – {Rule group name}
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: risk rule triggered block, transaction blocked by risk rule, security rule violation, risk policy triggered, rule-based decline, risk management rule applied
 
 SOURCE: Checkout.com
 CODE: 43201
@@ -1755,7 +1755,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Card number
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: card number on decline list, card blacklisted, card in blocklist, flagged card number, card number rejected, card blocked
 
 SOURCE: Checkout.com
 CODE: 43202
@@ -1764,7 +1764,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - BIN
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: BIN on decline list, card issuer BIN blacklisted, BIN in blocklist, flagged BIN, BIN rejected, card BIN blocked
 
 SOURCE: Checkout.com
 CODE: 43203
@@ -1773,7 +1773,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Email address
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: email address on decline list, email blacklisted, email in blocklist, flagged email address, email address rejected, email blocked
 
 SOURCE: Checkout.com
 CODE: 43204
@@ -1782,7 +1782,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Phone
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: phone number on decline list, blocked phone number, phone blacklisted, phone in blocklist, flagged phone number, phone number rejected
 
 SOURCE: Checkout.com
 CODE: 43205
@@ -1791,7 +1791,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Payment IP
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: payment IP on decline list, blocked IP address, IP blacklisted, IP in blocklist, flagged IP address, IP address rejected
 
 SOURCE: Checkout.com
 CODE: 43206
@@ -1800,7 +1800,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Decline list - Email domain
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: email domain on decline list, blocked email domain, domain blacklisted, domain in blocklist, flagged email domain, email domain rejected
 
 SOURCE: Checkout.com
 CODE: 43301
@@ -1809,7 +1809,7 @@ TYPE: hard decline
 RETRYABLE: no
 CAUSE: Transaction flagged as potentially fraudulent
 FIX: Customer must contact their bank immediately. Request a different payment method from the customer.
-SYNONYMS: fraudulent, suspicious activity, fraud detected, potential fraud, security risk
+SYNONYMS: fraud score too high, suspicious activity detected, fraud risk exceeded, risk threshold exceeded, fraud indicators present, high-risk transaction flagged
 
 SOURCE: Checkout.com
 CODE: 43401
@@ -1818,7 +1818,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: 3DS authentication required
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: 3DS verification required, strong customer authentication needed, additional authentication required, 3D Secure challenge needed, multi-factor authentication required, cardholder verification needed
 
 SOURCE: Checkout.com
 CODE: 50001
@@ -1827,7 +1827,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Compliance error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: compliance check failed, regulatory requirement violated, compliance violation, sanctions check failed, regulatory compliance issue, policy violation detected
 
 SOURCE: Checkout.com
 CODE: 50002
@@ -1836,7 +1836,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Sanction screening failure
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: sanctioned entity detected, sanctions list match, restricted party identified, embargoed entity, sanctioned beneficiary, sanctions screening blocked
 
 SOURCE: Checkout.com
 CODE: 50003
@@ -1845,7 +1845,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Customer account does not have enough funds available
 FIX: Retry the transaction after customer adds funds to their account, or request an alternative payment method.
-SYNONYMS: not enough money, low balance, no funds, account empty, balance too low, insufficient balance
+SYNONYMS: reserved balance insufficient, hold amount exceeds available balance, not enough reserved funds, insufficient reserved balance, balance hold failure, reservation shortfall
 
 SOURCE: Checkout.com
 CODE: 50005
@@ -1854,7 +1854,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Barred Beneficiary Error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: beneficiary barred, blocked beneficiary, prohibited payee, restricted beneficiary account, barred recipient, beneficiary not allowed
 
 SOURCE: Checkout.com
 CODE: 50020
@@ -1863,7 +1863,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Recipient error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: recipient validation failed, payee error, beneficiary issue, invalid payee, recipient problem, payee validation error
 
 SOURCE: Checkout.com
 CODE: 50021
@@ -1872,7 +1872,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: recipient details invalid, payee information incorrect, beneficiary details wrong, bad recipient data, invalid payee information, recipient information malformed
 
 SOURCE: Checkout.com
 CODE: 50022
@@ -1881,7 +1881,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Unsupported recipient error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: recipient type not supported, unsupported payee, recipient account type not allowed, recipient not supported, payee type invalid, unsupported beneficiary type
 
 SOURCE: Checkout.com
 CODE: 50023
@@ -1890,7 +1890,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: recipient limit exceeded, payee limit reached, beneficiary transaction limit exceeded, recipient limit breached, payee maximum exceeded, recipient amount limit hit
 
 SOURCE: Checkout.com
 CODE: 50025
@@ -1899,7 +1899,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: recipient account number invalid, payee account invalid, beneficiary account malformed, incorrect recipient account, invalid beneficiary account, bad recipient account
 
 SOURCE: Checkout.com
 CODE: 50026
@@ -1908,7 +1908,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Recipient Account Not Found
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: recipient account not found, payee account missing, beneficiary account does not exist, recipient account nonexistent, payee not in system, unknown recipient account
 
 SOURCE: Checkout.com
 CODE: 50027
@@ -1917,7 +1917,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Recipient Bank Error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: recipient bank unavailable, payee bank error, beneficiary bank issue, recipient institution problem, payee bank failure, beneficiary bank not found
 
 SOURCE: Checkout.com
 CODE: 50030
@@ -1926,7 +1926,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: recipient details incomplete, payee information missing, beneficiary details incorrect, recipient info malformed, incomplete recipient data, recipient data validation failed
 
 SOURCE: Checkout.com
 CODE: 50070
@@ -1935,7 +1935,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Sender error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: sender validation failed, originator error, remitter problem, sender account issue, originating account error, sender not valid
 
 SOURCE: Checkout.com
 CODE: 50100
@@ -1944,7 +1944,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Instruction error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: instruction malformed, transaction instruction invalid, payment instruction error, instruction format error, invalid payment instruction, instruction parsing failed
 
 SOURCE: Checkout.com
 CODE: 50101
@@ -1953,7 +1953,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: transaction amount exceeds limit, instruction amount too high, payment amount limit exceeded, amount over maximum, transaction amount limit breached, exceeds instruction limit
 
 SOURCE: Checkout.com
 CODE: 50102
@@ -1962,7 +1962,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: sender amount limit exceeded, originator transaction limit breached, remitter amount limit hit, sender transaction limit exceeded, originator maximum exceeded, sender limit violation
 
 SOURCE: Checkout.com
 CODE: 50103
@@ -1971,7 +1971,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: recipient amount limit exceeded, beneficiary transaction limit breached, payee amount limit hit, recipient maximum exceeded, beneficiary limit violation, payee transaction limit exceeded
 
 SOURCE: Checkout.com
 CODE: 50104
@@ -1980,7 +1980,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: velocity limit exceeded, transaction frequency limit hit, too many transactions, rate limit exceeded, transaction velocity breached, frequency limit reached
 
 SOURCE: Checkout.com
 CODE: 50105
@@ -1989,7 +1989,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: sender velocity limit exceeded, too many transactions from sender, sender transaction frequency limit, rapid sending detected, sender rate limit hit, sender transaction cap reached
 
 SOURCE: Checkout.com
 CODE: 50106
@@ -1998,7 +1998,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: recipient velocity limit exceeded, too many transactions to recipient, recipient transaction frequency limit, rapid receiving detected, recipient rate limit hit, recipient transaction cap reached
 
 SOURCE: Checkout.com
 CODE: 50150
@@ -2007,7 +2007,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Processing error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: processing error, transaction processing failed, system processing failure, unable to process transaction, backend processing error, processing system error
 
 SOURCE: Checkout.com
 CODE: 50180
@@ -2016,7 +2016,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Validation error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: validation error, data validation failed, invalid request format, validation check failed, input validation error, validation requirement not met
 
 SOURCE: Checkout.com
 CODE: 50200
@@ -2025,7 +2025,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Configuration error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: configuration error, system misconfiguration, invalid configuration, configuration not set, setup error, missing configuration
 
 SOURCE: Checkout.com
 CODE: 50240
@@ -2034,7 +2034,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Cancellation error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: cancellation failed, unable to cancel, cancellation not allowed, cancellation processing error, transaction cancellation failed, cannot cancel transaction
 
 SOURCE: Checkout.com
 CODE: 50260
@@ -2043,7 +2043,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Returned error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction returned, return processed, funds returned, transaction reversal, return initiated, returned to sender
 
 SOURCE: Checkout.com
 CODE: 50280
@@ -2052,7 +2052,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Customer account does not have enough funds available
 FIX: Retry the transaction after customer adds funds to their account, or request an alternative payment method.
-SYNONYMS: not enough money, low balance, no funds, account empty, balance too low, insufficient balance
+SYNONYMS: insufficient funds, not enough money, low balance, no funds available, account empty, inadequate funds
 
 SOURCE: Checkout.com
 CODE: 50399
@@ -2061,7 +2061,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Unmapped response
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: unmapped response, unknown error code, unrecognized response, undefined error, response not mapped, unclassified error
 
 SOURCE: Checkout.com
 CODE: 50401
@@ -2070,7 +2070,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: bank details invalid, incorrect bank information, invalid banking details, bad bank data, wrong bank details, malformed bank details
 
 SOURCE: Checkout.com
 CODE: 50402
@@ -2079,7 +2079,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account not found
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account not found, account does not exist, account lookup failed, no such account, account not registered, missing account
 
 SOURCE: Checkout.com
 CODE: 50403
@@ -2088,7 +2088,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account inactive
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account inactive, account not active, deactivated account, dormant account status, account suspended, account disabled
 
 SOURCE: Checkout.com
 CODE: 50404
@@ -2097,7 +2097,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account dormant
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account dormant, inactive account, account not in use, account put to sleep, dormant status, no activity account
 
 SOURCE: Checkout.com
 CODE: 50405
@@ -2106,7 +2106,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: account number invalid, incorrect account number, wrong account number, bad account number, invalid account identifier, malformed account number
 
 SOURCE: Checkout.com
 CODE: 50406
@@ -2115,7 +2115,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Branch not found
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: branch not found, branch does not exist, branch lookup failed, branch not registered, no such branch, missing branch
 
 SOURCE: Checkout.com
 CODE: 50407
@@ -2124,7 +2124,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: branch code invalid, incorrect branch code, wrong branch code, bad branch code, invalid branch identifier, malformed branch code
 
 SOURCE: Checkout.com
 CODE: 50408
@@ -2133,7 +2133,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Branch code required
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: branch code required, missing branch code, branch code not provided, branch code mandatory, branch code is required, specify branch code
 
 SOURCE: Checkout.com
 CODE: 50409
@@ -2142,7 +2142,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: bank code invalid, incorrect bank code, wrong bank code, bad bank code, invalid bank identifier, malformed bank code
 
 SOURCE: Checkout.com
 CODE: 50410
@@ -2151,7 +2151,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Bank code required
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: bank code required, missing bank code, bank code not provided, bank code mandatory, bank code is required, specify bank code
 
 SOURCE: Checkout.com
 CODE: 50441
@@ -2160,7 +2160,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account type required
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account type required, missing account type, account type not specified, account type mandatory, account type is required, specify account type
 
 SOURCE: Checkout.com
 CODE: 50451
@@ -2169,7 +2169,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: account holder details invalid, cardholder information incorrect, account owner details wrong, holder details not valid, account information mismatch, cardholder details incomplete
 
 SOURCE: Checkout.com
 CODE: 50452
@@ -2178,7 +2178,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account holder identification number required
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account holder identification number required, cardholder ID missing, holder identification needed, account owner ID not provided, identification number required, cardholder verification ID needed
 
 SOURCE: Checkout.com
 CODE: 50453
@@ -2187,7 +2187,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account holder type not supported
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account holder type not supported, cardholder account type unsupported, holder account category not allowed, account ownership type incompatible, account holder classification not supported, cardholder type invalid
 
 SOURCE: Checkout.com
 CODE: 50454
@@ -2196,7 +2196,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account holder type not allowed
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account holder type not allowed, cardholder type prohibited, holder account type restricted, account ownership type blocked, cardholder classification not permitted, account holder category forbidden
 
 SOURCE: Checkout.com
 CODE: 50466
@@ -2205,7 +2205,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account closed
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account closed, account no longer active, account terminated, closed account, account deactivated, inactive account
 
 SOURCE: Checkout.com
 CODE: 50471
@@ -2214,7 +2214,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account blocked
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account blocked, account restricted, account suspended, frozen account, account locked, account disabled
 
 SOURCE: Checkout.com
 CODE: 50481
@@ -2223,7 +2223,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid debtor account type, debtor account type unsupported, invalid account category, debtor account not valid, unsupported account type, incorrect account classification
 
 SOURCE: Checkout.com
 CODE: 50490
@@ -2232,7 +2232,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Duplicate Payment
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: duplicate payment, duplicate transaction, payment already processed, transaction already submitted, repeated payment, payment processed multiple times
 
 SOURCE: Checkout.com
 CODE: 50491
@@ -2241,7 +2241,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account holder billing address details incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account holder billing address details incorrect, cardholder billing address wrong, billing address invalid, incorrect billing address on file, billing address mismatch, address details incorrect
 
 SOURCE: Checkout.com
 CODE: 50492
@@ -2250,7 +2250,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account holder billing address details required
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account holder billing address details required, billing address missing, cardholder address required, billing address not provided, address information needed, billing address is mandatory
 
 SOURCE: Checkout.com
 CODE: 50494
@@ -2259,7 +2259,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Account holder billing address can not be PO box
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: account holder billing address can not be PO box, PO box address not allowed, billing address cannot be post office box, PO box not accepted, street address required, residential address required
 
 SOURCE: Checkout.com
 CODE: 50499
@@ -2268,7 +2268,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Payout Returned
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: payout returned, payout failed, funds return to sender, disbursement returned, payout unsuccessful, money returned from payout
 
 SOURCE: Checkout.com
 CODE: 50501
@@ -2277,7 +2277,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Unsupported characters
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: unsupported characters, invalid characters in field, special characters not allowed, unsupported character format, character encoding error, invalid character detected
 
 SOURCE: Checkout.com
 CODE: 50511
@@ -2286,7 +2286,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Payment information provided is invalid or incorrect
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: not valid, incorrect, wrong, bad, invalid data, malformed
+SYNONYMS: invalid amount, amount not valid, incorrect transaction amount, amount format wrong, bad amount, amount malformed
 
 SOURCE: Checkout.com
 CODE: 50512
@@ -2295,7 +2295,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Minimum amount not met
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: minimum amount not met, below minimum amount, amount too small, insufficient transaction amount, minimum threshold not reached, amount below minimum limit
 
 SOURCE: Checkout.com
 CODE: 50513
@@ -2304,7 +2304,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Exceeded transaction value
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: exceeded transaction value, transaction amount too high, maximum transaction amount exceeded, amount over limit, transaction exceeds maximum, amount ceiling exceeded
 
 SOURCE: Checkout.com
 CODE: 50514
@@ -2313,7 +2313,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: exceeded daily limit, daily limit reached, daily transaction limit exceeded, daily cap exceeded, daily spending limit reached, daily maximum exceeded
 
 SOURCE: Checkout.com
 CODE: 50515
@@ -2322,7 +2322,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: exceeded weekly limit, weekly limit reached, weekly transaction limit exceeded, weekly cap exceeded, weekly spending limit reached, weekly maximum exceeded
 
 SOURCE: Checkout.com
 CODE: 50517
@@ -2331,7 +2331,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Transaction amount exceeds card or account limits
 FIX: Retry with a lower amount, or ask customer to contact their bank to increase limits, or use a different payment method.
-SYNONYMS: over limit, exceeds limit, limit reached, maximum exceeded, threshold exceeded
+SYNONYMS: exceeded monthly limit, monthly limit reached, monthly transaction limit exceeded, monthly cap exceeded, monthly spending limit reached, monthly maximum exceeded
 
 SOURCE: Checkout.com
 CODE: 50531
@@ -2340,7 +2340,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Recalled
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: recalled, transaction recalled, payment recalled, funds recalled, transaction cancelled by request, recalled transaction
 
 SOURCE: Checkout.com
 CODE: 50599
@@ -2349,7 +2349,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Unknown reason
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: unspecified error, unknown failure reason, unclear decline, indeterminate issue, unidentified problem, no reason provided
 
 SOURCE: Checkout.com
 CODE: 200
@@ -2358,7 +2358,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: OK
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: transaction successful, payment approved, request succeeded, operation completed, success confirmed, approved
 
 SOURCE: Checkout.com
 CODE: 201
@@ -2367,7 +2367,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Created
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: resource created, transaction initiated, payment created, new record established, creation successful, submitted for processing
 
 SOURCE: Checkout.com
 CODE: 202
@@ -2376,7 +2376,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Accepted
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: request accepted, transaction queued, pending processing, submitted for review, acceptance confirmed, awaiting completion
 
 SOURCE: Checkout.com
 CODE: 204
@@ -2385,7 +2385,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Non-Authoritative Information
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: operation completed successfully, no content returned, success with no data, empty response, request processed silently, acknowledged
 
 SOURCE: Checkout.com
 CODE: 400
@@ -2394,7 +2394,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Bad Request
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: invalid request format, malformed request, bad request syntax, incorrect parameters, request structure error, invalid input
 
 SOURCE: Checkout.com
 CODE: 401
@@ -2403,7 +2403,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Unauthorized
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: authentication required, credentials invalid, not authenticated, login failed, authorization token missing, unauthorized access
 
 SOURCE: Checkout.com
 CODE: 403
@@ -2412,7 +2412,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Forbidden
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: access denied, forbidden transaction, permission denied, insufficient permissions, account restricted, not allowed to access
 
 SOURCE: Checkout.com
 CODE: 404
@@ -2421,7 +2421,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Not Found
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: resource not found, endpoint not found, transaction not found, page not found, missing resource, invalid resource path
 
 SOURCE: Checkout.com
 CODE: 406
@@ -2430,7 +2430,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Not Acceptable
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: response format not acceptable, unsupported format requested, content type rejected, incompatible format, format not supported, cannot fulfill request
 
 SOURCE: Checkout.com
 CODE: 409
@@ -2439,7 +2439,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Conflict
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: duplicate transaction, state conflict, resource conflict, duplicate request, conflicting operation, transaction already exists
 
 SOURCE: Checkout.com
 CODE: 412
@@ -2448,7 +2448,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Precondition Failed
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: precondition failed, request condition not met, invalid state transition, prerequisite not satisfied, conditions not met, validation failed
 
 SOURCE: Checkout.com
 CODE: 422
@@ -2457,7 +2457,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Unprocessable Content
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: unprocessable request, validation error, semantic error, data validation failed, field validation error, cannot process request
 
 SOURCE: Checkout.com
 CODE: 429
@@ -2466,7 +2466,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Too Many Requests
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: rate limit exceeded, too many requests, request throttled, quota exceeded, too frequent requests, rate limit hit
 
 SOURCE: Checkout.com
 CODE: 500
@@ -2475,7 +2475,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Internal Server Error
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: server error, internal error, system malfunction, server failure, unexpected error, processing error
 
 SOURCE: Checkout.com
 CODE: 502
@@ -2484,7 +2484,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Bad Gateway
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: gateway error, bad gateway, upstream server error, service communication failure, intermediary failure, connection error
 
 SOURCE: Checkout.com
 CODE: 503
@@ -2493,7 +2493,7 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Service Unavailable
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: service unavailable, server down, maintenance mode, temporarily unavailable, service offline, cannot process now
 
 SOURCE: Checkout.com
 CODE: 504
@@ -2502,4 +2502,4 @@ TYPE: soft decline
 RETRYABLE: yes
 CAUSE: Issuing bank declined the transaction with reason: Gateway Timeout
 FIX: Retry the transaction after a short delay, or request an alternative payment method if retries fail.
-SYNONYMS: payment declined, transaction rejected, authorization failed, payment failed, card declined, issuer declined
+SYNONYMS: gateway timeout, request timeout, server not responding, timeout waiting for response, slow server response, request timed out

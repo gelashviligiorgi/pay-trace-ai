@@ -34,12 +34,11 @@ export interface KnowledgeBaseMatch {
  */
 export async function searchKnowledgeBase(
   query: string,
-  limit: number = 5
+  limit: number = 5,
+  source?: string
 ): Promise<KnowledgeBaseMatch[]> {
-  // Step 1: Create VoyageAI client (imported via CommonJS workaround at top)
   const voyage = new VoyageAIClient({ apiKey: VOYAGE_API_KEY });
 
-  // Step 2: Generate embedding for the query using Voyage AI
   const res = await voyage.embed({
     model: 'voyage-large-2',
     input: [query],
@@ -51,21 +50,26 @@ export async function searchKnowledgeBase(
     throw new Error('Failed to generate embedding for query');
   }
 
-  // Step 2: Call Supabase RPC function for similarity search
   const { data, error } = await supabase.rpc('match_knowledge_base', {
     query_embedding: vector,
-    match_threshold: 0.5,
-    match_count: limit,
+    match_threshold: 0.3,
+    match_count: source ? limit * 4 : limit,
   });
 
   if (error) {
     throw new Error(`Failed to search knowledge base: ${error.message}`);
   }
 
-  // Step 3: Return formatted results
-  return (data || []).map((row: any) => ({
+  const results: KnowledgeBaseMatch[] = (data || []).map((row: any) => ({
     content: row.content,
     source: row.source,
     similarity: row.similarity,
   }));
+
+  if (source) {
+    const filtered = results.filter((r) => r.source === source);
+    return filtered.slice(0, limit);
+  }
+
+  return results;
 }

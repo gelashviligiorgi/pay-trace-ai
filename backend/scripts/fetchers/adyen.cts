@@ -6,9 +6,13 @@
 
 const axios = require('axios');
 const cheerio = require('cheerio');
+const { config } = require('dotenv');
+config({ path: '.env.local' });
+config();
+
 const {
   determineDeclineType,
-  buildEnrichedChunk,
+  buildEnrichedChunksWithClaude,
 } = require('../enrichers/processor-codes.cts');
 
 interface ProcessorCode {
@@ -229,8 +233,10 @@ export async function fetchAdyen(): Promise<string[]> {
 
   console.log(`\n🔧 Building enriched chunks for ${codes.length} codes...`);
 
-  // Build enriched text chunks
-  const chunks = codes.map(code => buildEnrichedChunk(code, 'Adyen'));
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) throw new Error('Missing ANTHROPIC_API_KEY');
+
+  const chunks = await buildEnrichedChunksWithClaude(codes, 'Adyen', apiKey);
 
   console.log(`  ✓ Built ${chunks.length} enriched chunks`);
 
