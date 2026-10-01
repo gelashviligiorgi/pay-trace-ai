@@ -6,6 +6,21 @@ Built to demonstrate three core AI engineering concepts: **RAG (Retrieval-Augmen
 
 ---
 
+## Contents
+
+- [How It Works — High Level](#how-it-works--high-level)
+- [Part 1 — RAG Pipeline](#part-1--rag-pipeline)
+- [Part 2 — Claude API & Tool Use](#part-2--claude-api--tool-use)
+- [Part 3 — The Agentic Loop](#part-3--the-agentic-loop)
+- [Part 4 — Error Code Registry](#part-4--error-code-registry)
+- [Part 5 — Streaming to the Frontend](#part-5--streaming-to-the-frontend)
+- [RAG Search Quality Tests](#rag-search-quality-tests)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Setup](#setup)
+
+---
+
 ## How It Works — High Level
 
 ```mermaid
