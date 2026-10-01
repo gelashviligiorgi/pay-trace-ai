@@ -79,10 +79,10 @@ const ERROR_REGISTRY: Record<string, ErrorCodeEntry> = {
   },
   '2074': {
     code: '2074',
-    meaning: 'Duplicate Transaction',
-    cause: 'Same transaction submitted multiple times within a short timeframe',
-    retryable: false,
-    fix: 'Check if original transaction succeeded; wait before attempting again',
+    meaning: 'Funding Instrument In The PayPal Account Was Declined By The Processor Or Bank, Or It Can\'t Be Used For This Payment',
+    cause: 'The PayPal funding instrument (bank account or card) linked to the account was declined or is not eligible for this payment',
+    retryable: true,
+    fix: 'Ask the customer to update their PayPal payment method or use a different funding source',
     source: 'Braintree',
   },
 

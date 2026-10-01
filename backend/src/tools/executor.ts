@@ -3,7 +3,7 @@
  */
 
 import { searchKnowledgeBase } from '../rag/search.js';
-import { lookupErrorCode } from './registry.js';
+import { lookupErrorCode, getAllErrorCodes } from './registry.js';
 
 /**
  * Execute a tool and return formatted result string
@@ -90,14 +90,28 @@ async function handleLookupErrorCode(input: Record<string, any>): Promise<string
     return 'Error: Missing or invalid "code" parameter';
   }
 
-  const entry = lookupErrorCode(code, provider);
+  let entry = lookupErrorCode(code, provider);
 
   if (!entry) {
-    let message = `No exact match found for code: "${code}"`;
-    if (provider) {
-      message += ` in provider: "${provider}"`;
+    // Fallback: scan all entries for any provider that uses this code value
+    const lowCode = code.toLowerCase();
+    const matches = getAllErrorCodes().filter(e => e.code.toLowerCase() === lowCode);
+
+    if (matches.length === 0) {
+      let message = `No exact match found for code: "${code}"`;
+      if (provider) message += ` in provider: "${provider}"`;
+      return message;
     }
-    return message;
+
+    if (matches.length === 1) {
+      entry = matches[0];
+    } else {
+      // Multiple providers share this code — return all of them
+      const results = matches.map(m =>
+        `[${m.source}] Code: ${m.code} | ${m.meaning}\n  Cause: ${m.cause}\n  Retryable: ${m.retryable ? 'Yes' : 'No'}\n  Fix: ${m.fix}`
+      ).join('\n\n');
+      return `Code "${code}" matches across multiple providers:\n\n${results}`;
+    }
   }
 
   // Format error code entry as readable string

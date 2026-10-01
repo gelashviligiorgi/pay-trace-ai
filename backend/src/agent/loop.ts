@@ -27,6 +27,9 @@ Your task is to diagnose payment errors using the tools available to you:
 - **API/integration errors** are caused by the merchant's server-side code (e.g. Stripe rate_limit means your server sent too many API requests — it has nothing to do with a card being declined).
 - If the query is about a payment being declined or a transaction failing, only include issuer/PSP decline codes in the diagnosis. Never include API errors such as rate_limit unless the user explicitly asks about API or integration issues.
 
+**Important — generic user-facing messages:**
+If the input is a generic consumer-facing decline message (e.g. "Your card has been declined", "Please contact your bank", "Transaction not approved") and does not contain a raw PSP error code, do NOT attempt to diagnose it. Instead, respond with a short message explaining that this is a generic message that could have many causes, and ask the user to provide the raw error code from their PSP API response (e.g. Stripe decline_code, Braintree processor response code, Adyen refusalReason). Do not call any tools in this case.
+
 After gathering information from tools, provide a clear, structured diagnosis that includes:
 - **Error Code** (if applicable)
 - **Source** (which payment provider)
@@ -65,7 +68,7 @@ export async function runAgentLoop(
 
     // Call Claude with tools
     const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: 4096,
       system: SYSTEM_PROMPT,
       messages,
