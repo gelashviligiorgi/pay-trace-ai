@@ -4,6 +4,8 @@ An AI-powered payment error debugger. Paste any payment error code or message â€
 
 Built to demonstrate three core AI engineering concepts: **RAG (Retrieval-Augmented Generation)**, **Claude API tool use**, and **agentic loops**.
 
+**Live demo:** <https://pay-trace-ai.vercel.app/>
+
 ---
 
 ## Contents
