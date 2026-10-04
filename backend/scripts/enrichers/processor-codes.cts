@@ -11,7 +11,7 @@ export interface ProcessorCode {
 /**
  * Determine if a code is hard or soft decline based on keywords
  */
-export function determineDeclineType(code: string, message: string): 'hard' | 'soft' {
+export function determineDeclineType(_code: string, message: string): 'hard' | 'soft' {
   const lowerMessage = message.toLowerCase();
 
   const hardDeclineKeywords = [
@@ -51,7 +51,7 @@ const SYNONYM_SEEDS: Record<string, string[]> = {
 /**
  * Generate natural language synonyms for a code based on its message
  */
-export function generateSynonyms(code: string, message: string): string {
+export function generateSynonyms(_code: string, message: string): string {
   const lowerMessage = message.toLowerCase();
 
   for (const [key, synonyms] of Object.entries(SYNONYM_SEEDS)) {
@@ -67,7 +67,7 @@ export function generateSynonyms(code: string, message: string): string {
 /**
  * Infer the root cause of a decline based on the message
  */
-export function inferCause(code: string, message: string): string {
+export function inferCause(_code: string, message: string): string {
   const causeMap: Record<string, string> = {
     'insufficient funds': 'Customer account does not have enough funds available',
     'do not honor': 'Issuing bank declined the transaction without specific reason',

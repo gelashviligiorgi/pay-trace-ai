@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { supabase } from '../lib/supabase.js';
 import { HealthResponse } from '../types/index.js';
 
-export const healthCheck = async (req: Request, res: Response<HealthResponse>) => {
+export const healthCheck = async (_req: Request, res: Response<HealthResponse>) => {
   const healthResponse: HealthResponse = {
     status: 'ok',
     supabase: {
@@ -14,7 +14,7 @@ export const healthCheck = async (req: Request, res: Response<HealthResponse>) =
 
   try {
     // Ping Supabase by selecting from knowledge_base
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('knowledge_base')
       .select('id')
       .limit(1);
