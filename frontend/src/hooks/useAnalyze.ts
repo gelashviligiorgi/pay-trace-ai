@@ -23,7 +23,7 @@ export const useAnalyze = (): UseAnalyzeReturn => {
     abortControllerRef.current = new AbortController();
 
     try {
-      const response = await fetch('http://localhost:3000/analyze', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
