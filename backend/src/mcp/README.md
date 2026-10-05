@@ -9,9 +9,23 @@ Claude calls this server and returns an answer grounded in the actual knowledge 
 
 ---
 
+## Architecture
+
+The MCP server is a thin client — it does not connect to Supabase or Voyage AI directly. Instead it calls the deployed backend over HTTPS, which handles all data access. This means you only need two values to run it:
+
+```text
+MCP server  ──HTTPS + X-MCP-Key──>  Deployed backend  ──>  Supabase / Voyage AI
+```
+
+- **No Supabase credentials needed**
+- **No Voyage AI credentials needed**
+- **One shared secret** authenticates all requests
+
+---
+
 ## Transport
 
-**stdio** — runs as a local child process. No HTTP server, no auth. Works out of the box with Claude Desktop.
+**stdio** — runs as a local child process. Claude Desktop spawns it on startup, communicates over stdin/stdout using JSON-RPC 2.0.
 
 ---
 
@@ -19,24 +33,26 @@ Claude calls this server and returns an answer grounded in the actual knowledge 
 
 | Tool | Description | Input |
 |---|---|---|
-| `lookup_error_code` | Exact lookup by error code and optional PSP | `code: string`, `provider?: string` |
-| `get_provider_codes` | All error codes for a given PSP | `provider: string` |
+| `lookup_error_code` | Exact lookup by error code and optional PSP | `code: string`, `provider?: enum` |
+| `get_provider_codes` | All error codes for a given PSP | `provider: enum` |
 | `search_payment_errors` | Semantic search across the vector knowledge base | `query: string`, `limit?: number` |
 | `list_providers` | Lists all supported payment service providers | — |
+
+The `provider` field is a strict enum — accepted values: `stripe`, `adyen`, `braintree`, `checkout.com`, `paypal`, `primer`, `3ds`.
 
 ### Tool details
 
 **`lookup_error_code`**
-Returns meaning, cause, fix, and whether the error is retryable. Wraps `lookupErrorCode()` from `tools/registry.ts`. Supports provider-prefixed lookup to resolve collisions (e.g. Adyen code `2` vs Primer code `02`).
+Returns meaning, cause, fix, and whether the error is retryable. Supports provider-scoped lookup to resolve collisions (e.g. Adyen code `2` vs Primer code `02`). Calls `GET /mcp/lookup`.
 
 **`get_provider_codes`**
-Returns all known error codes for a PSP. Useful for building reference tables or checking coverage. Wraps `getErrorCodesByProvider()` from `tools/registry.ts`.
+Returns all known error codes for a PSP. Useful for building reference tables or checking coverage. Calls `GET /mcp/provider-codes`.
 
 **`search_payment_errors`**
-Semantic vector search via Voyage AI embeddings + Supabase pgvector. Finds relevant entries even when the exact code is unknown — e.g. *"card blocked by fraud system"*. Wraps the existing RAG search in `rag/search.ts`.
+Semantic vector search via Voyage AI embeddings + Supabase pgvector. Finds relevant entries even when the exact code is unknown — e.g. *"card blocked by fraud system"*. Calls `POST /mcp/search`.
 
 **`list_providers`**
-Returns the list of PSPs covered: Stripe, Adyen, Braintree, Checkout.com, PayPal, Primer, Toss Payments, 3D Secure.
+Returns the list of PSPs covered: Stripe, Adyen, Braintree, Checkout.com, PayPal, Primer, 3D Secure. Calls `GET /mcp/providers`.
 
 ---
 
@@ -53,50 +69,63 @@ Example: `payment-errors://registry/stripe` returns all Stripe error codes with 
 
 ---
 
-## Implementation Plan
+## Setup
 
-### 1. Install SDK
+### 1. Clone and build
 
 ```bash
-cd backend
-npm install @modelcontextprotocol/sdk
+git clone <repo-url>
+cd pay-trace-ai/backend
+npm install
+npm run build
+# produces dist/mcp/server.js
 ```
 
-### 2. Create `backend/src/mcp/server.ts`
+### 2. Get credentials
 
-- Import `McpServer` from `@modelcontextprotocol/sdk/server/mcp.js`
-- Import `StdioServerTransport` from `@modelcontextprotocol/sdk/server/stdio.js`
-- Register 4 tools using `server.tool()`
-- Register 2 resources using `server.resource()`
-- Reuse `lookupErrorCode`, `getErrorCodesByProvider`, `getAllErrorCodes` from `tools/registry.ts`
-- Reuse semantic search from `rag/search.ts`
-- Connect via `new StdioServerTransport()` and call `server.connect(transport)`
+You need two values — ask the repo owner to send them to you:
 
-### 3. Add build script to `package.json`
+| Variable | Description |
+| --- | --- |
+| `BACKEND_URL` | URL of the deployed backend (e.g. `https://your-app.up.railway.app`) |
+| `MCP_API_KEY` | Shared secret that authenticates requests to the backend |
 
-```json
-"mcp": "node dist/mcp/server.js"
-```
+### 3. Configure Claude Desktop
 
-### 4. Wire up Claude Desktop
-
-Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+Open (or create) `~/Library/Application Support/Claude/claude_desktop_config.json` and add:
 
 ```json
 {
   "mcpServers": {
     "pay-trace-ai": {
       "command": "node",
-      "args": ["/absolute/path/to/backend/dist/mcp/server.js"],
+      "args": ["/absolute/path/to/pay-trace-ai/backend/dist/mcp/server.js"],
       "env": {
-        "SUPABASE_URL": "your-supabase-url",
-        "SUPABASE_SERVICE_KEY": "your-service-key",
-        "VOYAGE_API_KEY": "your-voyage-key"
+        "BACKEND_URL": "https://your-app.up.railway.app",
+        "MCP_API_KEY": "the-secret-you-received"
       }
     }
   }
 }
 ```
+
+Replace the path in `args` with the actual absolute path on your machine (`pwd` inside `backend/` gives it to you).
+
+### 4. Restart Claude Desktop
+
+Fully quit (`Cmd+Q`) and reopen. The tools icon (hammer) in the chat input should now show the 4 tools.
+
+---
+
+## For the backend owner — deploying the API key
+
+Add `MCP_API_KEY` to your Railway environment variables:
+
+1. Railway dashboard → your backend service → **Variables**
+2. Add `MCP_API_KEY=<random secret>` (generate one with `openssl rand -hex 32`)
+3. Railway redeploys automatically
+
+The key is checked on every request to `/mcp/*` routes via the `X-MCP-Key` header. All other routes (`/analyze`, `/health`) are unaffected.
 
 ---
 
@@ -104,15 +133,11 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 
 ```
 backend/src/mcp/
-├── server.ts        # MCP server entry point
+├── server.ts        # MCP server — stdio transport, 4 tools, 2 resources
 └── README.md        # This file
-```
 
-The server reuses existing modules — no business logic is duplicated:
-
-```
-tools/registry.ts    → lookup_error_code, get_provider_codes, list_providers
-rag/search.ts        → search_payment_errors
+backend/src/controllers/
+└── mcp.controller.ts  # Backend route handlers + auth middleware
 ```
 
 ---

@@ -1,8 +1,25 @@
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod/v3';
-import { lookupErrorCode, getErrorCodesByProvider } from '../tools/registry.js';
-import { searchKnowledgeBase } from '../rag/search.js';
+
+const BACKEND_URL = process.env.BACKEND_URL?.replace(/\/$/, '');
+const MCP_API_KEY = process.env.MCP_API_KEY;
+
+if (!BACKEND_URL || !MCP_API_KEY) {
+  process.stderr.write('Missing required env vars: BACKEND_URL, MCP_API_KEY\n');
+  process.exit(1);
+}
+
+async function mcpFetch(path: string): Promise<unknown> {
+  const res = await fetch(`${BACKEND_URL}${path}`, {
+    headers: { 'x-mcp-key': MCP_API_KEY as string },
+  });
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Backend error ${res.status}: ${body}`);
+  }
+  return res.json();
+}
 
 const PROVIDER_IDS = [
   'stripe',
@@ -13,16 +30,6 @@ const PROVIDER_IDS = [
   'primer',
   '3ds',
 ] as const;
-
-const PROVIDER_DISPLAY: Record<(typeof PROVIDER_IDS)[number], string> = {
-  'stripe': 'Stripe',
-  'adyen': 'Adyen',
-  'braintree': 'Braintree',
-  'checkout.com': 'Checkout.com',
-  'paypal': 'PayPal',
-  'primer': 'Primer',
-  '3ds': '3D Secure',
-};
 
 const server = new McpServer({ name: 'pay-trace-ai', version: '1.0.0' });
 
@@ -58,18 +65,15 @@ server.registerTool(
     inputSchema: lookupInput,
   },
   async ({ code, provider }) => {
-    const result = lookupErrorCode(code, provider);
-    if (!result) {
-      return {
-        content: [
-          {
-            type: 'text' as const,
-            text: `No entry found for code "${code}"${provider ? ` (provider: ${provider})` : ''}.`,
-          },
-        ],
-      };
+    const params = new URLSearchParams({ code });
+    if (provider) params.set('provider', provider);
+    try {
+      const result = await mcpFetch(`/mcp/lookup?${params}`);
+      return { content: [{ type: 'text' as const, text: JSON.stringify(result, null, 2) }] };
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      return { content: [{ type: 'text' as const, text: msg }] };
     }
-    return { content: [{ type: 'text' as const, text: JSON.stringify(result, null, 2) }] };
   },
 );
 
@@ -80,8 +84,8 @@ server.registerTool(
     inputSchema: providerInput,
   },
   async ({ provider }) => {
-    const codes = getErrorCodesByProvider(provider);
-    return { content: [{ type: 'text' as const, text: JSON.stringify(codes, null, 2) }] };
+    const result = await mcpFetch(`/mcp/provider-codes?provider=${provider}`);
+    return { content: [{ type: 'text' as const, text: JSON.stringify(result, null, 2) }] };
   },
 );
 
@@ -93,41 +97,46 @@ server.registerTool(
     inputSchema: searchInput,
   },
   async ({ query, limit }) => {
-    const results = await searchKnowledgeBase(query, limit ?? 5);
-    return { content: [{ type: 'text' as const, text: JSON.stringify(results, null, 2) }] };
+    const params = new URLSearchParams({ q: query });
+    if (limit !== undefined) params.set('limit', String(limit));
+    const result = await mcpFetch(`/mcp/search?${params}`);
+    return { content: [{ type: 'text' as const, text: JSON.stringify(result, null, 2) }] };
   },
 );
 
 server.registerTool(
   'list_providers',
   { description: 'Lists all supported payment service providers.' },
-  async () => ({
-    content: [{ type: 'text' as const, text: JSON.stringify(PROVIDER_DISPLAY) }],
-  }),
+  async () => {
+    const result = await mcpFetch('/mcp/providers');
+    return { content: [{ type: 'text' as const, text: JSON.stringify(result) }] };
+  },
 );
 
 server.registerResource(
   'providers',
   'payment-errors://providers',
   { description: 'JSON list of all supported PSPs', mimeType: 'application/json' },
-  async (uri) => ({
-    contents: [{ uri: uri.href, text: JSON.stringify(PROVIDER_DISPLAY), mimeType: 'application/json' }],
-  }),
+  async (uri) => {
+    const result = await mcpFetch('/mcp/providers');
+    return {
+      contents: [{ uri: uri.href, text: JSON.stringify(result), mimeType: 'application/json' }],
+    };
+  },
 );
 
 server.registerResource(
   'registry',
   new ResourceTemplate('payment-errors://registry/{provider}', { list: undefined }),
   { description: 'All error codes for a given PSP', mimeType: 'application/json' },
-  async (uri, { provider }) => ({
-    contents: [
-      {
-        uri: uri.href,
-        text: JSON.stringify(getErrorCodesByProvider(provider as string), null, 2),
-        mimeType: 'application/json',
-      },
-    ],
-  }),
+  async (uri, { provider }) => {
+    const result = await mcpFetch(`/mcp/provider-codes?provider=${provider}`);
+    return {
+      contents: [
+        { uri: uri.href, text: JSON.stringify(result, null, 2), mimeType: 'application/json' },
+      ],
+    };
+  },
 );
 
 async function main() {

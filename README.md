@@ -223,9 +223,11 @@ Claude calls the MCP server and returns an answer grounded in the actual knowled
 
 **Tools exposed:** `lookup_error_code`, `get_provider_codes`, `search_payment_errors`, `list_providers`
 
-**Transport:** stdio — runs as a local child process, no HTTP server or auth needed.
+**Transport:** stdio — runs as a local child process, communicates with Claude Desktop over stdin/stdout.
 
-For full setup instructions (build steps, Claude Desktop config) see [backend/src/mcp/README.md](backend/src/mcp/README.md).
+**Architecture:** the MCP server is a thin client that calls the deployed backend over HTTPS. No Supabase or Voyage AI credentials are needed — just a `BACKEND_URL` and a shared `MCP_API_KEY`. All MCP routes on the backend require the key via an `X-MCP-Key` header.
+
+For full setup instructions (build steps, Claude Desktop config, sharing with reviewers) see [backend/src/mcp/README.md](backend/src/mcp/README.md).
 
 ---
 
