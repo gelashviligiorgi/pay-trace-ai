@@ -16,6 +16,7 @@ Built to demonstrate three core AI engineering concepts: **RAG (Retrieval-Augmen
 - [Part 3 — The Agentic Loop](#part-3--the-agentic-loop)
 - [Part 4 — Error Code Registry](#part-4--error-code-registry)
 - [Part 5 — Streaming to the Frontend](#part-5--streaming-to-the-frontend)
+- [MCP Server](#mcp-server)
 - [RAG Search Quality Tests](#rag-search-quality-tests)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
@@ -195,7 +196,7 @@ A static in-memory lookup table with ~500 error codes across 8 providers. Each e
 }
 ```
 
-**Coverage:** Braintree (2001–2074), Stripe (70+ codes), Checkout.com (100+ codes), Adyen (30+ refusal codes), Primer/Visa/Mastercard (ISO 8583 codes), Toss Payments, PayPal, 3D Secure.
+**Coverage:** Braintree (2001–2074), Stripe (70+ codes), Checkout.com (100+ codes), Adyen (30+ refusal codes), Primer/Visa/Mastercard (ISO 8583 codes), PayPal, 3D Secure.
 
 The registry is the fast, deterministic path. The RAG search is the semantic fallback for anything the registry doesn't cover or for natural-language queries.
 
@@ -208,6 +209,23 @@ The registry is the fast, deterministic path. The RAG search is the semantic fal
 The response is delivered as Server-Sent Events (SSE). **File:** `frontend/src/hooks/useAnalyze.ts`
 
 The React hook reads the SSE stream with `fetch` + `ReadableStream`, parses each `data:` line, and accumulates the chunks into state. The `DiagnosisResult` component renders the accumulated markdown in real time, giving the live-typing effect.
+
+---
+
+## MCP Server
+
+The knowledge base is also exposed as an **MCP (Model Context Protocol) server**, so any MCP-compatible client — Claude Desktop, Cursor, etc. — can query it directly without going through the web UI.
+
+A developer debugging a payment failure can ask Claude Desktop:
+> *"What does Adyen refusal code 12 mean and how do I handle it?"*
+
+Claude calls the MCP server and returns an answer grounded in the actual knowledge base.
+
+**Tools exposed:** `lookup_error_code`, `get_provider_codes`, `search_payment_errors`, `list_providers`
+
+**Transport:** stdio — runs as a local child process, no HTTP server or auth needed.
+
+For full setup instructions (build steps, Claude Desktop config) see [backend/src/mcp/README.md](backend/src/mcp/README.md).
 
 ---
 
@@ -266,6 +284,9 @@ pay-trace-ai/
 │   │   ├── lib/
 │   │   │   ├── anthropic.ts     # Anthropic SDK client
 │   │   │   └── supabase.ts      # Supabase client
+│   │   ├── mcp/
+│   │   │   ├── server.ts        # MCP server — stdio transport, 4 tools, 2 resources
+│   │   │   └── README.md        # Setup guide for Claude Desktop
 │   │   ├── rag/
 │   │   │   ├── search.ts        # Embed query → Supabase cosine search
 │   │   │   └── test-search.ts   # RAG quality test suite

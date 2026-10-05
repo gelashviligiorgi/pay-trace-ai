@@ -15,13 +15,15 @@
     "fetch:adyen": "tsx scripts/fetchers/adyen.cts",
     "ingest": "tsx scripts/ingest.cts",
     "docs:update": "npm run fetch && npm run ingest",
-    "test:rag": "tsx src/rag/test-search.ts"
+    "test:rag": "tsx src/rag/test-search.ts",
+    "mcp": "node dist/mcp/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.82.0",
+    "@modelcontextprotocol/sdk": "^1.32.1",
     "@supabase/supabase-js": "^2.101.1",
     "@types/cheerio": "^0.22.35",
     "axios": "^1.15.0",
