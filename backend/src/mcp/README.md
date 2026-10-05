@@ -113,19 +113,7 @@ Replace the path in `args` with the actual absolute path on your machine (`pwd` 
 
 ### 4. Restart Claude Desktop
 
-Fully quit (`Cmd+Q`) and reopen. The tools icon (hammer) in the chat input should now show the 4 tools.
-
----
-
-## For the backend owner — deploying the API key
-
-Add `MCP_API_KEY` to your Railway environment variables:
-
-1. Railway dashboard → your backend service → **Variables**
-2. Add `MCP_API_KEY=<random secret>` (generate one with `openssl rand -hex 32`)
-3. Railway redeploys automatically
-
-The key is checked on every request to `/mcp/*` routes via the `X-MCP-Key` header. All other routes (`/analyze`, `/health`) are unaffected.
+Fully quit (`Cmd+Q`) and reopen. Go to **Settings → Developer** to confirm the server is connected.
 
 ---
 
@@ -139,16 +127,3 @@ backend/src/mcp/
 backend/src/controllers/
 └── mcp.controller.ts  # Backend route handlers + auth middleware
 ```
-
----
-
-## Scope Boundaries
-
-**In scope:**
-- Targeted lookups and semantic search
-- Read-only access to the knowledge base
-
-**Out of scope:**
-- Full diagnosis (that's the `/analyze` endpoint — the full agentic loop)
-- HTTP/SSE transport — stdio is sufficient for local use
-- Writing to the knowledge base
