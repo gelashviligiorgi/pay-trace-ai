@@ -78,11 +78,12 @@ function LoadingDots() {
 
 /* ── Main component ───────────────────────────────────────── */
 export const DiagnosisResult = ({ streamingText, isStreaming, error }: DiagnosisResultProps) => {
-  const [showCursor, setShowCursor] = useState(true);
+  const [cursorOn, setCursorOn] = useState(true);
+  const showCursor = isStreaming && cursorOn;
 
   useEffect(() => {
-    if (!isStreaming) { setShowCursor(false); return; }
-    const t = setInterval(() => setShowCursor((p) => !p), 530);
+    if (!isStreaming) return;
+    const t = setInterval(() => setCursorOn((p) => !p), 530);
     return () => clearInterval(t);
   }, [isStreaming]);
 
